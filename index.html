@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>xBase — мережа кіберклубів у Харкові</title>
+<meta name="description" content="Мережа комп'ютерних клубів xBase у Харкові: 5 локацій, потужні ПК, VIP Bootcamp, PlayStation 5, робота 24/7.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="no-sticky-cta">
+
+<header class="header">
+  <div class="header__bar">
+    <a href="index.html" class="logo">x<span>Base</span></a>
+    <nav class="nav">
+      <a href="#clubs">Клуби</a>
+      <a href="#about">Про нас</a>
+      <a href="#booking">Контакти</a>
+    </nav>
+    <div class="header__actions">
+      <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener" class="social-link">Instagram</a>
+      <a href="#booking" class="btn-cta">Забронювати</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero hero--home">
+  <div class="hero__glow"></div>
+  <div class="hero__inner">
+    <div class="eyebrow">Харків · 5 локацій · 24/7</div>
+    <h1>Мережа кібер клубів Xbase у Харкові</h1>
+    <div class="chips">
+      <div class="chip">Потужні комп'ютери</div>
+      <div class="chip">VIP зона (Bootcamp)</div>
+      <div class="chip">Playstation 5 на ігрових TV</div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="booking__card">
+    <div class="booking__text">
+      <h2>Забронюйте місце заздалегідь</h2>
+      <p>Вкажіть свої дані, клуб і розділ — ми зателефонуємо, щоб підтвердити бронювання.</p>
+    </div>
+    <form class="booking__form" id="booking-form">
+      <div class="booking__row">
+        <input type="text" name="name" required placeholder="Ваше ім'я" />
+        <input type="tel" name="phone" required placeholder="+380 __ ___ __ __" />
+      </div>
+      <div class="booking__row">
+        <input type="date" name="date" required />
+        <input type="time" name="time" required />
+      </div>
+      <div class="booking__row">
+        <select name="club" required>
+          <option value="" disabled selected>Оберіть клуб</option>
+          <option value="saltovka">Героїв Праці</option>
+          <option value="pobeda">Перемога</option>
+          <option value="holodka">Холодна Гора</option>
+          <option value="palac">Палац Спорту</option>
+          <option value="centr">Центр</option>
+        </select>
+        <select name="section" required disabled>
+          <option value="" disabled selected>Спочатку оберіть клуб</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-cta">Забронювати</button>
+    </form>
+  </div>
+  <p class="booking__thanks" id="booking-thanks">Дякуємо! Ми передзвонимо Вам найближчим часом.</p>
+</section>
+
+<section class="section" id="clubs">
+  <div class="section__head">
+    <div>
+      <div class="eyebrow" style="margin-bottom:12px">Клуби мережі</div>
+      <h2>Оберіть свою локацію</h2>
+    </div>
+    <p class="section__lead">Єдиний стандарт заліза й сервісу в кожному клубі. Різниця — у зонах, техніці та атмосфері.</p>
+  </div>
+
+  <div class="club-grid">
+
+    <a href="saltovka.html" class="club-card">
+      <div class="club-card__photo"><span class="club-card__photo-label">Фото клубу · Героїв Праці</span></div>
+      <div class="club-card__body">
+        <div class="club-card__tag">Салтівка</div>
+        <h3 class="club-card__title">Xbase м. Героїв Праці</h3>
+        <p class="club-card__desc">500 метрів від станції метро. Gaming, VIP Bootcamp та PS5 VIP на Салтівці.</p>
+        <span class="club-card__link">Детальніше →</span>
+      </div>
+    </a>
+
+    <a href="pobeda.html" class="club-card">
+      <div class="club-card__photo"><span class="club-card__photo-label">Фото клубу · Перемога</span></div>
+      <div class="club-card__body">
+        <div class="club-card__tag">50 м від метро</div>
+        <h3 class="club-card__title">Xbase м. Перемога</h3>
+        <p class="club-card__desc">Найближчий до метро клуб. Зони PlayStation 5 та PlayStation 4 Pro.</p>
+        <span class="club-card__link">Детальніше →</span>
+      </div>
+    </a>
+
+    <a href="holodka.html" class="club-card">
+      <div class="club-card__photo"><span class="club-card__photo-label">Фото клубу · Холодна Гора</span></div>
+      <div class="club-card__body">
+        <div class="club-card__tag">TV QLED 75"</div>
+        <h3 class="club-card__title">Xbase м. Холодна Гора</h3>
+        <p class="club-card__desc">Одразу за супермаркетом РОСТ. PS5 VIP на 75" 120Hz зі звуком 5.1 та кафе.</p>
+        <span class="club-card__link">Детальніше →</span>
+      </div>
+    </a>
+
+    <a href="palac.html" class="club-card">
+      <div class="club-card__photo">
+        <span class="club-card__photo-label">Фото клубу · Палац Спорту</span>
+        <span class="club-card__badge">Нова генерація</span>
+      </div>
+      <div class="club-card__body">
+        <div class="club-card__tag">RTX 5060 · 600Hz</div>
+        <h3 class="club-card__title">Xbase м. Палац Спорту</h3>
+        <p class="club-card__desc">Найновіше залізо мережі: Ryzen 7000, RX 9070XT та монітор 600Hz у SuperVIP.</p>
+        <span class="club-card__link">Детальніше →</span>
+      </div>
+    </a>
+
+    <a href="centr.html" class="club-card club-card--feature">
+      <div class="club-card__photo">
+        <img src="assets/img/cen-hero.webp" alt="XBase Центр" loading="lazy">
+        <span class="club-card__badge club-card__badge--solid">Lounge &amp; Cafe</span>
+      </div>
+      <div class="club-card__body">
+        <div class="club-card__tag">Навпроти ТРЦ Нікольський</div>
+        <h3 class="club-card__title">XBase Центр</h3>
+        <p class="club-card__desc">Найпреміальніший клуб: 7800X3D, монітори 500Hz, лаунж, тераса, кальяни, бар і кухня.</p>
+        <span class="club-card__link">Детальніше →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <h2>xBase, база кіберспорту</h2>
+      <p>xBase — це мережа сучасних комп'ютерних клубів у Харкові, де кожен гість може провести час із задоволенням, граючи на потужних комп'ютерах. У наших клубах є різні зони ПК, кожен зможе знайти собі комп'ютер за смаком та бюджетом. Крім цього є комфортабельні зони PlayStation.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat__num">5</div><div class="stat__label">клубів у місті</div></div>
+      <div class="stat"><div class="stat__num">24/7</div><div class="stat__label">без вихідних</div></div>
+      <div class="stat"><div class="stat__num">40+</div><div class="stat__label">ігор встановлено</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href="index.html" class="logo">x<span>Base</span></a>
+        <a href="mailto:info@xbase.cc" class="tel">info@xbase.cc</a>
+        <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener" class="tel">Instagram</a>
+      </div>
+      <div class="switcher">
+        <div class="switcher__list">
+          <a href="saltovka.html">Героїв Праці</a>
+          <a href="pobeda.html">Перемога</a>
+          <a href="holodka.html">Холодна Гора</a>
+          <a href="palac.html">Палац Спорту</a>
+          <a href="centr.html">Центр</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__copy">© Комп'ютерний клуб xBase 2020-2026</div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+  XBase.initBooking("#booking-form", "#booking-thanks");
+</script>
+</body>
+</html>
