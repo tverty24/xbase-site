@@ -134,6 +134,11 @@ button{font-family:inherit}
   padding:16px 20px;min-width:150px;flex:1;border-radius:14px;border:1px solid rgba(255,255,255,.16);
   background:rgba(7,7,10,.55);color:var(--fg);font-family:inherit;font-size:15px;outline:none;
 }
+.field{display:flex;flex-direction:column;gap:6px;flex:1;min-width:150px}
+.field__label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,241,236,.5);padding-left:2px}
+.field input{flex:none;min-width:0;width:100%;box-sizing:border-box}
+.booking__form input[type="date"],
+.booking__form input[type="time"]{color-scheme:dark;-webkit-text-fill-color:var(--fg)}
 .booking__form select option{background:#141417;color:var(--fg)}
 .booking__form select:disabled{opacity:.5;cursor:not-allowed}
 .booking__form button{align-self:flex-start}

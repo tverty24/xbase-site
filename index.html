@@ -49,8 +49,14 @@
         <input type="tel" name="phone" required placeholder="+380 __ ___ __ __" />
       </div>
       <div class="booking__row">
-        <input type="date" name="date" required />
-        <input type="time" name="time" required />
+        <label class="field">
+          <span class="field__label">Дата</span>
+          <input type="date" name="date" required />
+        </label>
+        <label class="field">
+          <span class="field__label">Час</span>
+          <input type="time" name="time" required />
+        </label>
       </div>
       <div class="booking__row">
         <select name="club" required>
