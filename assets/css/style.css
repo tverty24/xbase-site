@@ -129,16 +129,21 @@ button{font-family:inherit}
 .booking__text h2{font-family:var(--font-display);font-weight:700;font-size:clamp(20px,2.6vw,28px);line-height:1.2;margin:0 0 10px}
 .booking__text p{margin:0;font-size:14px;line-height:1.6;color:var(--muted)}
 .booking__form{display:flex;flex-direction:column;gap:12px;width:100%;max-width:420px;color-scheme:dark}
-.booking__row{display:flex;gap:12px;flex-wrap:wrap}
+.booking__row{display:flex;gap:12px;flex-wrap:wrap;min-width:0}
 .booking__form input,.booking__form select{
   padding:16px 20px;min-width:150px;flex:1;border-radius:14px;border:1px solid rgba(255,255,255,.16);
   background:rgba(7,7,10,.55);color:var(--fg);font-family:inherit;font-size:15px;outline:none;
 }
-.field{display:flex;flex-direction:column;gap:6px;flex:1;min-width:150px}
+.field{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0;max-width:100%}
 .field__label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,241,236,.5);padding-left:2px}
-.field input{flex:none;min-width:0;width:100%;box-sizing:border-box}
+.field input{flex:none;min-width:0;width:100%;max-width:100%;box-sizing:border-box}
 .booking__form input[type="date"],
-.booking__form input[type="time"]{color-scheme:dark;-webkit-text-fill-color:var(--fg)}
+.booking__form input[type="time"]{
+  color-scheme:dark;-webkit-text-fill-color:var(--fg);
+  /* iOS Safari ignores width:100% on date/time inputs inside flex layouts; this forces it to
+     respect the container width instead of overflowing past the card edge. */
+  width:1px;min-width:100%;max-width:100%;box-sizing:border-box;
+}
 .booking__form select option{background:#141417;color:var(--fg)}
 .booking__form select:disabled{opacity:.5;cursor:not-allowed}
 .booking__form button{align-self:flex-start}
