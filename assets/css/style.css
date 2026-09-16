@@ -366,6 +366,8 @@ table.price-table tr.row:hover{background:rgba(255,107,20,.06)}
   .switcher__label{display:none}
   .switcher__list{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .switcher__list a{padding:10px 16px}
+  /* Footer club list: only 5 short links, wrap instead of scrolling so nothing is ever cut off */
+  .footer .switcher__list{flex-wrap:wrap;overflow-x:visible}
 
   /* Hero */
   .hero{padding-top:28px;padding-bottom:20px}
