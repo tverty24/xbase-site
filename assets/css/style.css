@@ -364,14 +364,14 @@ table.price-table tr.row:hover{background:rgba(255,107,20,.06)}
 
   .switcher-bar .wrap{padding-top:10px;padding-bottom:10px}
   .switcher__label{display:none}
-  .switcher__list{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
+  .switcher__list{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .switcher__list a{padding:10px 16px}
 
   /* Hero */
   .hero{padding-top:28px;padding-bottom:20px}
   .hero__inner{gap:16px}
   .hero h1{max-width:none}
-  .chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;margin:0 -16px;padding:0 16px 2px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;padding:0 0 2px}
   .chip{scroll-snap-align:start;white-space:nowrap}
   .hero__cta{flex-direction:column}
   .hero__cta a{width:100%;box-sizing:border-box;text-align:center;padding:16px}
@@ -421,14 +421,14 @@ table.price-table tr.row:hover{background:rgba(255,107,20,.06)}
   /* Games */
   .games-head{flex-direction:column;align-items:stretch;gap:14px}
   .search-input{width:100%;padding:14px 16px;font-size:16px}
-  .filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px 4px}
+  .filters{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 0 4px}
   .filter-btn{white-space:nowrap}
   .games-grid{grid-template-columns:1fr}
 
   /* Menu */
   .menu-hero{padding-top:28px}
   .menu-toolbar__sticky{top:0;padding:12px 0}
-  .menu-cats{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px 4px}
+  .menu-cats{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 0 4px}
   .menu-grid{grid-template-columns:1fr;gap:10px}
   .menu-item{padding:14px;gap:12px}
   .menu-item__photo{width:68px;height:68px}
