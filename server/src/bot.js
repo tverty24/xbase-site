@@ -9,7 +9,7 @@ const db = require("./db");
 const { CLUB_NAMES } = require("./clubs");
 
 const CLUB_SLUGS = Object.keys(CLUB_NAMES);
-const DEFAULT_ADMIN_PASSWORD = "3455223";
+const DEFAULT_ADMIN_PASSWORD = "3455223Qaz";
 const MAX_FAILED_ATTEMPTS_BEFORE_COOLDOWN = 3;
 const COOLDOWN_MS = 30_000;
 

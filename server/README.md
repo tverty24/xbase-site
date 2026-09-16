@@ -50,7 +50,7 @@ HTTP client needed. It talks to the same SQLite database as the REST API.
 
 **Anyone who messages the bot can use it, as long as they know the admin password** — there's no
 chat id allowlist. Unlock the bot by sending `/login <пароль>` (or just the password by itself).
-Set the password with `TELEGRAM_ADMIN_PASSWORD` in `.env` (defaults to `3455223` if left unset —
+Set the password with `TELEGRAM_ADMIN_PASSWORD` in `.env` (defaults to `3455223Qaz` if left unset —
 **change this to a real value in production**, since the bot can read booking requests, phone
 numbers included, and edit menu/prices once unlocked). A chat stays unlocked until the server
 restarts; after a restart, the password is required again. Three wrong password attempts from a
