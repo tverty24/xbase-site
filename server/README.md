@@ -65,22 +65,49 @@ Commands (send any of these to the bot in Telegram):
 - `/prices клуб` — show a club's computer tariff zones and PlayStation prices
 - `/zoneprice клуб id wd1 wd3 wd5 wdDay wdNight [we1 we3 we5 weDay weNight]` — update a tariff
   zone's weekday prices, and optionally its weekend prices (omit to leave weekend as-is)
+- `/panel` — send a button that opens the Mini App admin panel (see below)
+
+## Mini App admin panel
+
+A full admin UI (`server/public/admin/`) served by this same server at `/admin/`, opened as a
+[Telegram Mini App](https://core.telegram.org/bots/webapps) via the bot's `/panel` command. It
+covers everything the chat commands do, with actual forms instead of typed syntax:
+
+- **Бронювання** — browse booking requests
+- **Меню** — add, edit and delete cafe menu items
+- **Ціни** — per club, add/edit/delete computer tariff zones and PlayStation cards
+
+No password or API key to type: the page reads Telegram's `initData` (proof of who opened it,
+signed by Telegram) and sends it as an `x-telegram-init-data` header on every API call. The
+server verifies that signature against `TELEGRAM_BOT_TOKEN` and checks the Telegram user id
+against the same `TELEGRAM_ADMIN_IDS`/`TELEGRAM_CHAT_ID` allowlist the chat commands use (see
+`src/telegramAuth.js` and `src/middleware/auth.js`) — so only your admins can open it, and it
+never has to embed `ADMIN_API_KEY` in client-side code. Opening `/admin/` outside Telegram (a
+normal browser) shows a message asking you to open it from the bot instead, since there's no
+`initData` to verify there.
+
+No BotFather setup is needed for the `/panel` button itself (domain registration via
+`/setdomain` is only required if you later add the Mini App to the bot's persistent Menu Button
+or attachment menu instead of an inline button).
 
 ## API
 
 Public (no auth):
 - `GET  /api/menu` — cafe menu items
+- `GET  /api/clubs` — club slugs + display names
 - `GET  /api/clubs/:slug/prices` — computer specs + tariffs + PlayStation cards for a club (`saltovka`, `pobeda`, `holodka`, `palac`, `centr`)
 - `POST /api/bookings` — `{ "phone": "+380...", "club": "centr" }`, called by the booking form
 
-Admin (require header `x-api-key: <ADMIN_API_KEY>`):
+Admin (require header `x-api-key: <ADMIN_API_KEY>`, or `x-telegram-init-data: <initData>` from
+an allowlisted Telegram user — see the Mini App section above):
 - `GET    /api/bookings` — list submitted booking requests
 - `POST   /api/menu`, `PUT /api/menu/:id`, `DELETE /api/menu/:id`
 - `POST   /api/clubs/:slug/prices/zones`, `PUT .../zones/:id`, `DELETE .../zones/:id`
 - `POST   /api/clubs/:slug/prices/ps`, `PUT .../ps/:id`, `DELETE .../ps/:id`
 
-There's no admin web page yet — edit data with `curl`/Postman/Insomnia, or a GUI SQLite
-browser pointed at the `.db` file. Example: change a menu item's price —
+For everyday edits, use the Mini App admin panel above (`/panel` in the bot). For scripting or
+one-off fixes you can still hit the API directly with `curl`/Postman/Insomnia, or use a GUI
+SQLite browser pointed at the `.db` file. Example: change a menu item's price —
 
 ```bash
 curl -X PUT http://localhost:8080/api/menu/1 \

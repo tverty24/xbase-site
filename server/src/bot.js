@@ -5,11 +5,13 @@
 
 const db = require("./db");
 const { CLUB_NAMES } = require("./clubs");
+const { getAdminIds } = require("./adminIds");
 
 const CLUB_SLUGS = Object.keys(CLUB_NAMES);
 
 const HELP = [
   "Команди клубного бота:",
+  "/panel — відкрити адмін-панель (Mini App) з усіма можливостями нижче",
   "/bookings [n] — останні заявки на бронювання (за замовч. 10)",
   "/menu [категорія] — позиції меню",
   "/addmenu категорія | назва | ціна | примітка — додати позицію меню (примітка не обов'язкова)",
@@ -186,12 +188,22 @@ async function callApi(token, method, params) {
   return res.json();
 }
 
-async function send(token, chatId, text) {
+async function send(token, chatId, text, extra) {
   try {
-    await callApi(token, "sendMessage", { chat_id: chatId, text });
+    await callApi(token, "sendMessage", { chat_id: chatId, text, ...extra });
   } catch (err) {
     console.error("Telegram bot sendMessage error:", err);
   }
+}
+
+async function sendPanelLink(token, chatId) {
+  const base = (process.env.PUBLIC_BASE_URL || "https://xbase-server.onrender.com").replace(/\/+$/, "");
+  const url = `${base}/admin/`;
+  await send(token, chatId, "Адмін-панель клубу:", {
+    reply_markup: {
+      inline_keyboard: [[{ text: "Відкрити адмін-панель", web_app: { url } }]]
+    }
+  });
 }
 
 async function poll(token, allowed) {
@@ -220,6 +232,11 @@ async function poll(token, allowed) {
         await send(token, chatId, "Доступ заборонено.");
         continue;
       }
+      const cmd = msg.text.trim().split(/\s+/)[0].split("@")[0].toLowerCase();
+      if (cmd === "/panel") {
+        await sendPanelLink(token, chatId);
+        continue;
+      }
       await send(token, chatId, dispatch(msg.text));
     }
   }
@@ -229,8 +246,7 @@ function startBot() {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) return;
 
-  const idsRaw = process.env.TELEGRAM_ADMIN_IDS || process.env.TELEGRAM_CHAT_ID || "";
-  const allowed = new Set(idsRaw.split(",").map((s) => s.trim()).filter(Boolean));
+  const allowed = getAdminIds();
   if (!allowed.size) {
     console.warn("TELEGRAM_BOT_TOKEN is set but no TELEGRAM_ADMIN_IDS/TELEGRAM_CHAT_ID — bot commands disabled.");
     return;

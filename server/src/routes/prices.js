@@ -14,6 +14,7 @@ function serializeZone(row) {
     zone: row.zone_name,
     badge: row.badge || null,
     isTop: !!row.is_top,
+    hasToggle: !!row.has_toggle,
     cpu: row.cpu, gpu: row.gpu, ram: row.ram, monitor: row.monitor,
     periph: row.periph, chair: row.chair,
     wd, we,

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>xBase — адмін-панель</title>
+<link rel="stylesheet" href="admin.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <div id="authGate" class="gate" hidden>
+    <p>Відкрийте цю сторінку через кнопку «Відкрити адмін-панель» в Telegram-боті (команда /panel).</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+    <header class="topbar">
+      <div class="topbar__brand">x<span>Base</span> · адмін</div>
+      <button id="refreshBtn" class="icon-btn" title="Оновити">⟳</button>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="bookings">Бронювання</button>
+      <button class="tab" data-tab="menu">Меню</button>
+      <button class="tab" data-tab="prices">Ціни</button>
+    </nav>
+
+    <main class="panels">
+      <section id="panel-bookings" class="panel active">
+        <div id="bookingsList" class="list"></div>
+      </section>
+
+      <section id="panel-menu" class="panel">
+        <div id="menuList" class="list"></div>
+        <form id="menuAddForm" class="card form">
+          <h3>Додати позицію меню</h3>
+          <input name="category" placeholder="Категорія" required>
+          <input name="name" placeholder="Назва" required>
+          <input name="priceUah" type="number" min="0" step="1" placeholder="Ціна, ₴" required>
+          <input name="note" placeholder="Примітка (необов'язково)">
+          <button type="submit" class="btn">Додати</button>
+        </form>
+      </section>
+
+      <section id="panel-prices" class="panel">
+        <select id="clubSelect" class="club-select"></select>
+        <h3 class="section-title">Тарифні зони ПК</h3>
+        <div id="zonesList" class="list"></div>
+        <form id="zoneAddForm" class="card form">
+          <h3>Додати тарифну зону</h3>
+          <input name="zone" placeholder="Назва зони" required>
+          <label class="checkbox"><input type="checkbox" name="isTop"> Топова зона (позначка «топ»)</label>
+          <input name="badge" placeholder="Бейдж (необов'язково)">
+          <input name="cpu" placeholder="CPU">
+          <input name="gpu" placeholder="GPU">
+          <input name="ram" placeholder="RAM">
+          <input name="monitor" placeholder="Монітор">
+          <input name="periph" placeholder="Периферія">
+          <input name="chair" placeholder="Крісло">
+          <div class="grid5">
+            <input name="wd1" type="number" placeholder="Будні 1г" required>
+            <input name="wd3" type="number" placeholder="Будні 3г" required>
+            <input name="wd5" type="number" placeholder="Будні 5г" required>
+            <input name="wdDay" type="number" placeholder="Будні день" required>
+            <input name="wdNight" type="number" placeholder="Будні ніч" required>
+          </div>
+          <label class="checkbox"><input type="checkbox" name="hasToggle" class="toggle-we"> Окремі ціни на вихідні</label>
+          <div class="grid5 we-fields" hidden>
+            <input name="we1" type="number" placeholder="Вихідні 1г">
+            <input name="we3" type="number" placeholder="Вихідні 3г">
+            <input name="we5" type="number" placeholder="Вихідні 5г">
+            <input name="weDay" type="number" placeholder="Вихідні день">
+            <input name="weNight" type="number" placeholder="Вихідні ніч">
+          </div>
+          <button type="submit" class="btn">Додати зону</button>
+        </form>
+
+        <h3 class="section-title">PlayStation</h3>
+        <div id="psList" class="list"></div>
+        <form id="psAddForm" class="card form">
+          <h3>Додати картку PlayStation</h3>
+          <input name="title" placeholder="Назва" required>
+          <label class="checkbox"><input type="checkbox" name="isVip"> VIP</label>
+          <input name="badge" placeholder="Бейдж (необов'язково)">
+          <div id="psAddRows" class="ps-rows"></div>
+          <button type="button" class="btn-outline" id="psAddRowBtn">+ рядок ціни</button>
+          <button type="submit" class="btn">Додати картку</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
