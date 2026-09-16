@@ -1,12 +1,15 @@
 // Telegram bot for managing the club from chat: bookings, cafe menu, club prices.
 // Long-polls the Bot API (no inbound webhook/public URL needed). Only chat ids listed in
-// TELEGRAM_ADMIN_IDS (or TELEGRAM_CHAT_ID as a fallback) may run commands; everyone else is refused.
+// TELEGRAM_ADMIN_IDS (or TELEGRAM_CHAT_ID as a fallback) may talk to the bot at all, and even
+// then a chat must unlock with the admin password (TELEGRAM_ADMIN_PASSWORD) before any command
+// runs. Unlocked chats stay unlocked until the server restarts.
 // Never throws out of startBot() — a misconfigured or unreachable bot must not take the API server down.
 
 const db = require("./db");
 const { CLUB_NAMES } = require("./clubs");
 
 const CLUB_SLUGS = Object.keys(CLUB_NAMES);
+const DEFAULT_ADMIN_PASSWORD = "3455223";
 
 const HELP = [
   "Команди клубного бота:",
@@ -194,7 +197,15 @@ async function send(token, chatId, text) {
   }
 }
 
-async function poll(token, allowed) {
+function extractPasswordAttempt(text) {
+  const trimmed = text.trim();
+  const loginMatch = trimmed.match(/^\/login(?:@\S+)?\s+(.+)$/i);
+  if (loginMatch) return loginMatch[1].trim();
+  return trimmed;
+}
+
+async function poll(token, allowed, password) {
+  const unlocked = new Set();
   let offset = 0;
   for (;;) {
     let updates;
@@ -220,6 +231,15 @@ async function poll(token, allowed) {
         await send(token, chatId, "Доступ заборонено.");
         continue;
       }
+      if (!unlocked.has(chatId)) {
+        if (extractPasswordAttempt(msg.text) === password) {
+          unlocked.add(chatId);
+          await send(token, chatId, "Пароль вірний. Бот розблоковано.\n\n" + HELP);
+        } else {
+          await send(token, chatId, "Введіть пароль адміністратора, щоб розблокувати бота (/login пароль).");
+        }
+        continue;
+      }
       await send(token, chatId, dispatch(msg.text));
     }
   }
@@ -236,8 +256,10 @@ function startBot() {
     return;
   }
 
-  poll(token, allowed).catch((err) => console.error("Telegram bot crashed:", err));
-  console.log(`Telegram management bot started (${allowed.size} authorized chat id(s)).`);
+  const password = process.env.TELEGRAM_ADMIN_PASSWORD || DEFAULT_ADMIN_PASSWORD;
+
+  poll(token, allowed, password).catch((err) => console.error("Telegram bot crashed:", err));
+  console.log(`Telegram management bot started (${allowed.size} authorized chat id(s), password required).`);
 }
 
 module.exports = { startBot };

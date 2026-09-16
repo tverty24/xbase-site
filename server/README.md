@@ -49,9 +49,15 @@ bookings, the cafe menu and club prices straight from a Telegram chat — no adm
 HTTP client needed. It talks to the same SQLite database as the REST API.
 
 Only chat ids listed in `TELEGRAM_ADMIN_IDS` (comma-separated; falls back to `TELEGRAM_CHAT_ID`
-if left blank) may run commands — anyone else gets "Доступ заборонено." To find your own chat
-id, message your bot and check `https://api.telegram.org/bot<TOKEN>/getUpdates` (same as step 3
-above). Restart the server after editing `.env`.
+if left blank) may talk to the bot at all — anyone else gets "Доступ заборонено." To find your
+own chat id, message your bot and check `https://api.telegram.org/bot<TOKEN>/getUpdates` (same
+as step 3 above).
+
+Even an allowed chat must unlock the bot with the admin password before any command runs: send
+`/login <пароль>` (or just the password by itself). Set the password with `TELEGRAM_ADMIN_PASSWORD`
+in `.env` (defaults to `3455223` if left unset — change this in production). A chat stays
+unlocked until the server restarts; after a restart, the password is required again. Restart the
+server after editing `.env`.
 
 Commands (send any of these to the bot in Telegram):
 
