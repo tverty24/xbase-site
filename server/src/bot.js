@@ -1,17 +1,12 @@
 // Telegram bot for managing the club from chat: bookings, cafe menu, club prices.
-// Long-polls the Bot API (no inbound webhook/public URL needed). ANY Telegram chat may message
-// this bot; it must unlock with the admin password (TELEGRAM_ADMIN_PASSWORD) before any command
-// runs. Unlocked chats stay unlocked until the server restarts. Repeated wrong-password attempts
-// from a chat are throttled with a growing cooldown to slow down brute-forcing the password.
+// Long-polls the Bot API (no inbound webhook/public URL needed). Only chat ids listed in
+// TELEGRAM_ADMIN_IDS (or TELEGRAM_CHAT_ID as a fallback) may run commands; everyone else is refused.
 // Never throws out of startBot() — a misconfigured or unreachable bot must not take the API server down.
 
 const db = require("./db");
 const { CLUB_NAMES } = require("./clubs");
 
 const CLUB_SLUGS = Object.keys(CLUB_NAMES);
-const DEFAULT_ADMIN_PASSWORD = "3455223Qaz";
-const MAX_FAILED_ATTEMPTS_BEFORE_COOLDOWN = 3;
-const COOLDOWN_MS = 30_000;
 
 const HELP = [
   "Команди клубного бота:",
@@ -199,16 +194,7 @@ async function send(token, chatId, text) {
   }
 }
 
-function extractPasswordAttempt(text) {
-  const trimmed = text.trim();
-  const loginMatch = trimmed.match(/^\/login(?:@\S+)?\s+(.+)$/i);
-  if (loginMatch) return loginMatch[1].trim();
-  return trimmed;
-}
-
-async function poll(token, password) {
-  const unlocked = new Set();
-  const failedAttempts = new Map(); // chatId -> { count, cooldownUntil }
+async function poll(token, allowed) {
   let offset = 0;
   for (;;) {
     let updates;
@@ -230,25 +216,8 @@ async function poll(token, password) {
       const msg = upd.message;
       if (!msg || !msg.text) continue;
       const chatId = msg.chat.id;
-
-      if (!unlocked.has(chatId)) {
-        const state = failedAttempts.get(chatId);
-        if (state && state.cooldownUntil > Date.now()) {
-          const waitSec = Math.ceil((state.cooldownUntil - Date.now()) / 1000);
-          await send(token, chatId, `Забагато невдалих спроб. Спробуйте через ${waitSec} с.`);
-          continue;
-        }
-        if (extractPasswordAttempt(msg.text) === password) {
-          unlocked.add(chatId);
-          failedAttempts.delete(chatId);
-          await send(token, chatId, "Пароль вірний. Бот розблоковано.\n\n" + HELP);
-        } else {
-          const count = (state ? state.count : 0) + 1;
-          const cooldownUntil =
-            count >= MAX_FAILED_ATTEMPTS_BEFORE_COOLDOWN ? Date.now() + COOLDOWN_MS * (count - MAX_FAILED_ATTEMPTS_BEFORE_COOLDOWN + 1) : 0;
-          failedAttempts.set(chatId, { count, cooldownUntil });
-          await send(token, chatId, "Введіть пароль адміністратора, щоб розблокувати бота (/login пароль).");
-        }
+      if (!allowed.has(String(chatId))) {
+        await send(token, chatId, "Доступ заборонено.");
         continue;
       }
       await send(token, chatId, dispatch(msg.text));
@@ -260,10 +229,15 @@ function startBot() {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   if (!token) return;
 
-  const password = process.env.TELEGRAM_ADMIN_PASSWORD || DEFAULT_ADMIN_PASSWORD;
+  const idsRaw = process.env.TELEGRAM_ADMIN_IDS || process.env.TELEGRAM_CHAT_ID || "";
+  const allowed = new Set(idsRaw.split(",").map((s) => s.trim()).filter(Boolean));
+  if (!allowed.size) {
+    console.warn("TELEGRAM_BOT_TOKEN is set but no TELEGRAM_ADMIN_IDS/TELEGRAM_CHAT_ID — bot commands disabled.");
+    return;
+  }
 
-  poll(token, password).catch((err) => console.error("Telegram bot crashed:", err));
-  console.log("Telegram management bot started (open to any chat, password required).");
+  poll(token, allowed).catch((err) => console.error("Telegram bot crashed:", err));
+  console.log(`Telegram management bot started (${allowed.size} authorized chat id(s)).`);
 }
 
 module.exports = { startBot };
