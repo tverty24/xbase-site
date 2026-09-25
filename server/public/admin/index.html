@@ -4,91 +4,114 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>xBase — адмін-панель</title>
-<link rel="stylesheet" href="admin.css">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%278%27 fill=%27%23060708%27/%3E%3Cpath fill=%27%23c8ff2e%27 d=%27M4 4h9l7 10 7-10h9L25 20l11 16h-9l-7-10-7 10H4l11-16Z%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="admin.css?v=2">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
   <div id="authGate" class="gate" hidden>
-    <p>Відкрийте цю сторінку через кнопку «Відкрити адмін-панель» в Telegram-боті (команда /panel).</p>
+    <svg class="logo-mark logo-mark--big" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h9l7 10 7-10h9L25 20l11 16h-9l-7-10-7 10H4l11-16Z"/></svg>
+    <h1 class="gate__title">Адмін-панель</h1>
+    <p>Відкрийте цю сторінку через кнопку «Відкрити адмін-панель» у Telegram-боті (команда /panel).</p>
   </div>
 
   <div id="app" class="app" hidden>
     <header class="topbar">
-      <div class="topbar__brand">x<span>Base</span> · адмін</div>
-      <button id="refreshBtn" class="icon-btn" title="Оновити">⟳</button>
+      <div class="topbar__brand">
+        <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h9l7 10 7-10h9L25 20l11 16h-9l-7-10-7 10H4l11-16Z"/></svg>
+        <span>XBASE</span><small>admin</small>
+      </div>
+      <button id="refreshBtn" class="icon-btn" title="Оновити" aria-label="Оновити">
+        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+      </button>
     </header>
 
-    <nav class="tabs">
-      <button class="tab active" data-tab="bookings">Бронювання</button>
-      <button class="tab" data-tab="menu">Меню</button>
-      <button class="tab" data-tab="prices">Ціни</button>
+    <nav class="tabs" aria-label="Розділи">
+      <button class="tab active" data-tab="bookings"><small>01</small>Бронювання</button>
+      <button class="tab" data-tab="menu"><small>02</small>Меню</button>
+      <button class="tab" data-tab="prices"><small>03</small>Ціни</button>
     </nav>
 
     <main class="panels">
       <section id="panel-bookings" class="panel active">
+        <div class="panel__head">
+          <p class="eyebrow"><span>●</span> Заявки з сайту</p>
+          <h2 class="h-xl">Бронювання</h2>
+        </div>
         <div id="bookingsList" class="list"></div>
       </section>
 
       <section id="panel-menu" class="panel">
+        <div class="panel__head">
+          <p class="eyebrow"><span>●</span> Кафе · Центр</p>
+          <h2 class="h-xl">Меню</h2>
+        </div>
+        <details class="card card--add">
+          <summary><span class="plus">+</span> Додати позицію меню</summary>
+          <form id="menuAddForm" class="form">
+            <label class="fld"><span>Категорія</span><input name="category" placeholder="Напр. Бургери" required></label>
+            <label class="fld"><span>Назва</span><input name="name" placeholder="Назва страви чи напою" required></label>
+            <label class="fld"><span>Ціна, ₴</span><input name="priceUah" type="number" min="0" step="1" inputmode="numeric" placeholder="0" required></label>
+            <label class="fld"><span>Примітка</span><input name="note" placeholder="Необов'язково"></label>
+            <button type="submit" class="btn btn--accent">Додати</button>
+          </form>
+        </details>
         <div id="menuList" class="list"></div>
-        <form id="menuAddForm" class="card form">
-          <h3>Додати позицію меню</h3>
-          <input name="category" placeholder="Категорія" required>
-          <input name="name" placeholder="Назва" required>
-          <input name="priceUah" type="number" min="0" step="1" placeholder="Ціна, ₴" required>
-          <input name="note" placeholder="Примітка (необов'язково)">
-          <button type="submit" class="btn">Додати</button>
-        </form>
       </section>
 
       <section id="panel-prices" class="panel">
-        <select id="clubSelect" class="club-select"></select>
-        <h3 class="section-title">Тарифні зони ПК</h3>
-        <div id="zonesList" class="list"></div>
-        <form id="zoneAddForm" class="card form">
-          <h3>Додати тарифну зону</h3>
-          <input name="zone" placeholder="Назва зони" required>
-          <label class="checkbox"><input type="checkbox" name="isTop"> Топова зона (позначка «топ»)</label>
-          <input name="badge" placeholder="Бейдж (необов'язково)">
-          <input name="cpu" placeholder="CPU">
-          <input name="gpu" placeholder="GPU">
-          <input name="ram" placeholder="RAM">
-          <input name="monitor" placeholder="Монітор">
-          <input name="periph" placeholder="Периферія">
-          <input name="chair" placeholder="Крісло">
-          <div class="grid5">
-            <input name="wd1" type="number" placeholder="Будні 1г" required>
-            <input name="wd3" type="number" placeholder="Будні 3г" required>
-            <input name="wd5" type="number" placeholder="Будні 5г" required>
-            <input name="wdDay" type="number" placeholder="Будні день" required>
-            <input name="wdNight" type="number" placeholder="Будні ніч" required>
-          </div>
-          <label class="checkbox"><input type="checkbox" name="hasToggle" class="toggle-we"> Окремі ціни на вихідні</label>
-          <div class="grid5 we-fields" hidden>
-            <input name="we1" type="number" placeholder="Вихідні 1г">
-            <input name="we3" type="number" placeholder="Вихідні 3г">
-            <input name="we5" type="number" placeholder="Вихідні 5г">
-            <input name="weDay" type="number" placeholder="Вихідні день">
-            <input name="weNight" type="number" placeholder="Вихідні ніч">
-          </div>
-          <button type="submit" class="btn">Додати зону</button>
-        </form>
+        <div class="panel__head">
+          <p class="eyebrow"><span>●</span> Тарифи та залізо</p>
+          <h2 class="h-xl">Ціни</h2>
+        </div>
+        <div id="clubChips" class="chips-row" role="tablist" aria-label="Клуб"></div>
+        <select id="clubSelect" class="club-select" hidden></select>
 
-        <h3 class="section-title">PlayStation</h3>
+        <h3 class="section-title"><span>ПК</span> Тарифні зони</h3>
+        <div id="zonesList" class="list"></div>
+        <details class="card card--add">
+          <summary><span class="plus">+</span> Додати тарифну зону</summary>
+          <form id="zoneAddForm" class="form">
+            <label class="fld"><span>Назва зони</span><input name="zone" placeholder="Напр. VIP zone" required></label>
+            <label class="fld"><span>Бейдж</span><input name="badge" placeholder="Необов'язково, напр. «Топ зона»"></label>
+            <label class="switch"><input type="checkbox" name="isTop"><i></i> Топова зона (виділяється на сайті)</label>
+            <div class="grid2">
+              <label class="fld"><span>CPU</span><input name="cpu"></label>
+              <label class="fld"><span>GPU</span><input name="gpu"></label>
+              <label class="fld"><span>RAM</span><input name="ram"></label>
+              <label class="fld"><span>Монітор</span><input name="monitor"></label>
+            </div>
+            <label class="fld"><span>Периферія</span><input name="periph"></label>
+            <label class="fld"><span>Крісло</span><input name="chair"></label>
+            <div class="price-grid" data-grid="wd"></div>
+            <label class="switch"><input type="checkbox" name="hasToggle" class="toggle-we"><i></i> Окремі ціни на вихідні (пт–нд)</label>
+            <div class="price-grid we-fields" data-grid="we" hidden></div>
+            <button type="submit" class="btn btn--accent">Додати зону</button>
+          </form>
+        </details>
+
+        <h3 class="section-title"><span>PS</span> PlayStation</h3>
         <div id="psList" class="list"></div>
-        <form id="psAddForm" class="card form">
-          <h3>Додати картку PlayStation</h3>
-          <input name="title" placeholder="Назва" required>
-          <label class="checkbox"><input type="checkbox" name="isVip"> VIP</label>
-          <input name="badge" placeholder="Бейдж (необов'язково)">
-          <div id="psAddRows" class="ps-rows"></div>
-          <button type="button" class="btn-outline" id="psAddRowBtn">+ рядок ціни</button>
-          <button type="submit" class="btn">Додати картку</button>
-        </form>
+        <details class="card card--add">
+          <summary><span class="plus">+</span> Додати картку PlayStation</summary>
+          <form id="psAddForm" class="form">
+            <label class="fld"><span>Назва</span><input name="title" placeholder="Напр. PlayStation 5 + TV 65&quot;" required></label>
+            <label class="fld"><span>Бейдж</span><input name="badge" placeholder="Необов'язково"></label>
+            <label class="switch"><input type="checkbox" name="isVip"><i></i> VIP</label>
+            <p class="fld-label">Рядки цін</p>
+            <div id="psAddRows" class="ps-rows"></div>
+            <button type="button" class="btn btn--ghost btn--sm" id="psAddRowBtn">+ рядок ціни</button>
+            <button type="submit" class="btn btn--accent">Додати картку</button>
+          </form>
+        </details>
       </section>
     </main>
   </div>
 
-  <script src="admin.js"></script>
+  <script src="admin.js?v=2"></script>
 </body>
 </html>
