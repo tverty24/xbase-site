@@ -1,192 +1,685 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>xBase — мережа кіберклубів у Харкові</title>
-<meta name="description" content="Мережа комп'ютерних клубів xBase у Харкові: 5 локацій, потужні ПК, VIP Bootcamp, PlayStation 5, робота 24/7.">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
-</head>
-<body class="no-sticky-cta">
+<title>xBase — мережа кіберклубів у Харкові | ПК, VIP Bootcamp, PlayStation 5</title>
+<meta name="description" content="xBase — мережа з 5 комп'ютерних клубів у Харкові: Героїв Праці, Перемога, Холодна Гора, Палац Спорту та Центр. Потужні ПК, VIP-зона Bootcamp, SuperVIP з моніторами до 600 Гц і PlayStation 5 на ігрових TV.">
+<meta name="theme-color" content="#060708">
+<meta name="color-scheme" content="dark">
 
-<header class="header">
-  <div class="header__bar">
-    <a href="index.html" class="logo">x<span>Base</span></a>
-    <nav class="nav">
-      <a href="#clubs">Клуби</a>
-      <a href="#about">Про нас</a>
-      <a href="#booking">Контакти</a>
-    </nav>
-    <div class="header__actions">
-      <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener" class="social-link">Instagram</a>
-      <a href="#booking" class="btn-cta">Забронювати</a>
-    </div>
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:site_name" content="xBase">
+<meta property="og:title" content="xBase — мережа кіберклубів у Харкові">
+<meta property="og:description" content="5 клубів, потужні ПК, VIP-зона Bootcamp і PlayStation 5 на ігрових TV. Play harder.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "xBase",
+  "email": "info@xbase.cc",
+  "sameAs": ["https://www.instagram.com/xbase.cc", "https://t.me/xbase_cyber_club"],
+  "department": [
+    {"@type": "LocalBusiness", "name": "xBase Героїв Праці", "telephone": "+380667759119", "address": {"@type": "PostalAddress", "streetAddress": "вул. Академіка Павлова, 319А/1", "addressLocality": "Харків", "addressCountry": "UA"}},
+    {"@type": "LocalBusiness", "name": "xBase Перемога", "telephone": "+380667759229", "address": {"@type": "PostalAddress", "streetAddress": "проспект Перемоги, 59", "addressLocality": "Харків", "addressCountry": "UA"}},
+    {"@type": "LocalBusiness", "name": "xBase Холодна Гора", "telephone": "+380667759339", "address": {"@type": "PostalAddress", "streetAddress": "провулок Володимира Усенка, 25А", "addressLocality": "Харків", "addressCountry": "UA"}},
+    {"@type": "LocalBusiness", "name": "xBase Палац Спорту", "telephone": "+380667759449", "address": {"@type": "PostalAddress", "streetAddress": "проспект Героїв Харкова, 190/1", "addressLocality": "Харків", "addressCountry": "UA"}},
+    {"@type": "LocalBusiness", "name": "xBase Центр", "telephone": "+380667759559", "address": {"@type": "PostalAddress", "streetAddress": "вул. Григорія Сковороди, 5", "addressLocality": "Харків", "addressCountry": "UA"}}
+  ]
+}
+</script>
+</head>
+<body class="is-loading">
+
+<a class="skip" href="#main">Перейти до вмісту</a>
+
+<!-- ============ ICON SPRITE (Lucide, ISC) ============ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+  <symbol id="i-gpu" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+  <symbol id="i-ram" viewBox="0 0 24 24"><path d="M6 19v-3M10 19v-3M14 19v-3M18 19v-3M8 11V9M16 11V9M12 11V9M2 15h20"/><path d="M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1.1a2 2 0 0 0 0 3.837V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5.1a2 2 0 0 0 0-3.837Z"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/></symbol>
+  <symbol id="i-chair" viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M5 18v2M19 18v2"/></symbol>
+  <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <filter id="fx-distort" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.03" numOctaves="1" seed="4" result="noise"/>
+    <feDisplacementMap id="fxDisp" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<!-- ============ PRELOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__word"><span>X</span><span>B</span><span>A</span><span>S</span><span>E</span></div>
+    <div class="loader__meta"><span>Kharkiv</span><span class="loader__count" id="loaderCount">000</span></div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
   </div>
+</div>
+
+<!-- ============ CURSOR + FX ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label"></span></div><div class="cursor__dot"></div></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="xBase — нагору">
+    <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h9l7 10 7-10h9L25 20l11 16h-9l-7-10-7 10H4l11-16Z"/></svg>
+    <span>XBASE</span>
+  </a>
+  <nav class="nav__links" aria-label="Основна навігація">
+    <a href="#clubs">Клуби</a>
+    <a href="#zones">Зали</a>
+    <a href="#hardware">Залізо</a>
+    <a href="#playstation">PlayStation</a>
+    <a href="#contacts">Контакти</a>
+  </nav>
+  <button class="btn btn--accent btn--sm magnetic nav__cta" type="button" data-book data-cursor="BOOK">
+    <span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg>
+  </button>
+  <button class="burger" id="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
 </header>
 
-<section class="hero hero--home">
-  <div class="hero__glow"></div>
-  <div class="hero__inner">
-    <div class="eyebrow">Харків · 5 локацій · 24/7</div>
-    <h1>Мережа кібер клубів Xbase у Харкові</h1>
-    <div class="chips">
-      <div class="chip">Потужні комп'ютери</div>
-      <div class="chip">VIP зона (Bootcamp)</div>
-      <div class="chip">Playstation 5 на ігрових TV</div>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Мобільна навігація">
+    <a href="#clubs"><small>01</small>Клуби</a>
+    <a href="#zones"><small>02</small>Зали</a>
+    <a href="#hardware"><small>03</small>Залізо</a>
+    <a href="#bootcamp"><small>04</small>Bootcamp</a>
+    <a href="#playstation"><small>05</small>PlayStation</a>
+    <a href="#contacts"><small>06</small>Контакти</a>
+  </nav>
+  <div class="mmenu__foot">
+    <button class="btn btn--accent btn--block" type="button" data-book><span class="btn__label">Забронювати місце</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+    <div class="mmenu__social">
+      <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://t.me/xbase_cyber_club" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:info@xbase.cc">info@xbase.cc</a>
     </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <canvas class="hero__gl" id="gl" aria-hidden="true"></canvas>
+  <div class="hero__fallback" aria-hidden="true"></div>
+  <div class="hero__watermark" aria-hidden="true" data-depth="-0.6">XBASE</div>
+
+  <div class="hero__hud hero__hud--tl" data-depth="0.25">
+    <span class="dot-live"></span> Мережа кіберклубів · Харків
+  </div>
+  <div class="hero__hud hero__hud--tr" data-depth="0.25">
+    <span>49°59′N · 36°13′E</span><span class="hud-sep"></span><span>KHARKIV <b id="clock">--:--</b></span>
+  </div>
+
+  <div class="hero__content">
+    <h1 class="hero__title" id="hero-title">
+      <span class="sr-only">xBase — мережа комп'ютерних клубів у Харкові.</span>
+      <span class="hero__line" aria-hidden="true" data-depth="0.5"><span class="split-hero">PLAY</span></span>
+      <span class="hero__line hero__line--outline" aria-hidden="true" data-depth="0.9"><span class="split-hero">HARDER.</span></span>
+    </h1>
+
+    <div class="hero__bottom">
+      <p class="hero__lead reveal-up">5&nbsp;клубів xBase у&nbsp;Харкові: потужні комп'ютери, VIP-зона <em>Bootcamp</em> і&nbsp;PlayStation&nbsp;5 на&nbsp;ігрових&nbsp;TV. Працюємо 24/7.</p>
+      <div class="hero__actions reveal-up">
+        <button class="btn btn--accent btn--lg magnetic" type="button" data-book data-cursor="BOOK">
+          <span class="btn__label">Забронювати місце</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg>
+        </button>
+        <a class="btn btn--ghost btn--lg magnetic" href="#clubs"><span class="btn__label">Обрати клуб</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <ul class="hero__stats reveal-up" aria-label="Коротко про xBase">
+      <li><b>05</b><span>клубів у&nbsp;різних районах міста</span></li>
+      <li><b>600<small>Гц</small></b><span>монітори в&nbsp;SuperVIP (Палац Спорту)</span></li>
+      <li><b>24/7</b><span>без вихідних, 40+ встановлених ігор</span></li>
+    </ul>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
+  <div class="hero__beam" aria-hidden="true"></div>
+</section>
+
+<!-- ============ MANIFESTO / STORY (horizontal) ============ -->
+<section class="story" id="xbase" aria-labelledby="story-title">
+  <div class="story__pin">
+    <div class="story__track" id="storyTrack">
+
+      <article class="story__panel story__panel--intro">
+        <p class="eyebrow"><span>00</span> xBase</p>
+        <svg class="story__ring" viewBox="0 0 300 300" aria-hidden="true">
+          <defs><path id="ringPath" d="M150,150 m-118,0 a118,118 0 1,1 236,0 a118,118 0 1,1 -236,0"/></defs>
+          <circle cx="150" cy="150" r="140" class="story__ring-o"/>
+          <text><textPath href="#ringPath">XBASE · KHARKIV · 05 CLUBS · PLAY HARDER · </textPath></text>
+          <path class="story__ring-x" d="M118 118h16l16 22 16-22h16l-24 32 24 32h-16l-16-22-16 22h-16l24-32Z"/>
+        </svg>
+        <h2 class="story__statement" id="story-title" data-words>xBase — база кіберспорту в&nbsp;Харкові. П'ять адрес. Один рівень гри.</h2>
+      </article>
+
+      <article class="story__panel">
+        <div class="story__num" data-speed="1.35">01</div>
+        <h3 class="story__word" data-speed="0.8">POWER</h3>
+        <div class="story__text">
+          <p class="story__kicker">Потужні комп'ютери</p>
+          <p>У&nbsp;SuperVIP — AMD Ryzen&nbsp;7 7800X3D і&nbsp;Radeon RX&nbsp;9070&nbsp;XT з&nbsp;32&nbsp;ГБ&nbsp;DDR5. У&nbsp;кожному клубі — кілька зон ПК під різний рівень і&nbsp;бюджет.</p>
+        </div>
+        <svg class="story__art story__art--power" viewBox="0 0 200 200" aria-hidden="true"><rect x="50" y="50" width="100" height="100" rx="10"/><rect x="78" y="78" width="44" height="44" rx="4"/><path d="M70 30v20M100 30v20M130 30v20M70 150v20M100 150v20M130 150v20M30 70h20M30 100h20M30 130h20M150 70h20M150 100h20M150 130h20"/></svg>
+      </article>
+
+      <article class="story__panel">
+        <div class="story__num" data-speed="1.35">02</div>
+        <h3 class="story__word" data-speed="0.8">SPEED</h3>
+        <div class="story__text">
+          <p class="story__kicker">Монітори до 600 Гц</p>
+          <p>MSI 24″ 600&nbsp;Гц і&nbsp;Dell Alienware 25″ 500&nbsp;Гц у&nbsp;SuperVIP, BenQ XL2566K 360&nbsp;Гц у&nbsp;VIP на&nbsp;Перемозі. Кадр приходить раніше, ніж суперник встигає кліпнути.</p>
+        </div>
+        <svg class="story__art story__art--speed" viewBox="0 0 200 200" aria-hidden="true"><path d="M20 140 Q60 140 80 100 T140 60 L180 60"/><path d="M20 160 Q70 160 95 120 T150 80 L180 80" /><path d="M20 180 Q80 180 110 140 T160 100 L180 100"/></svg>
+      </article>
+
+      <article class="story__panel">
+        <div class="story__num" data-speed="1.35">03</div>
+        <h3 class="story__word" data-speed="0.8">COMPETE</h3>
+        <div class="story__text">
+          <p class="story__kicker">Steam · Epic Games · Riot · Battle.net</p>
+          <p>Counter-Strike&nbsp;2, Dota&nbsp;2, Valorant, Fortnite, GTA&nbsp;V, PUBG, Apex Legends і&nbsp;десятки інших ігор уже встановлені. Немає потрібної — встановимо до вашого приходу.</p>
+        </div>
+        <svg class="story__art story__art--compete" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="40"/><circle cx="100" cy="100" r="8"/><path d="M100 10v40M100 150v40M10 100h40M150 100h40"/></svg>
+      </article>
+
+    </div>
+    <div class="story__progress" aria-hidden="true"><i id="storyBar"></i></div>
   </div>
 </section>
 
-<section class="booking" id="booking">
-  <div class="booking__card">
-    <div class="booking__text">
-      <h2>Забронюйте місце заздалегідь</h2>
-      <p>Вкажіть свої дані, клуб і розділ — ми зателефонуємо, щоб підтвердити бронювання.</p>
-    </div>
-    <form class="booking__form" id="booking-form">
-      <div class="booking__row">
-        <input type="text" name="name" required placeholder="Ваше ім'я" />
-        <input type="tel" name="phone" required placeholder="+380 __ ___ __ __" />
-      </div>
-      <div class="booking__row">
-        <label class="field">
-          <span class="field__label">Дата</span>
-          <input type="date" name="date" required />
-        </label>
-        <label class="field">
-          <span class="field__label">Час</span>
-          <input type="time" name="time" required />
-        </label>
-      </div>
-      <div class="booking__row">
-        <select name="club" required>
-          <option value="" disabled selected>Оберіть клуб</option>
-          <option value="saltovka">Героїв Праці</option>
-          <option value="pobeda">Перемога</option>
-          <option value="holodka">Холодна Гора</option>
-          <option value="palac">Палац Спорту</option>
-          <option value="centr">Центр</option>
-        </select>
-        <select name="section" required disabled>
-          <option value="" disabled selected>Спочатку оберіть клуб</option>
-        </select>
-      </div>
-      <button type="submit" class="btn-cta">Забронювати</button>
-    </form>
+<!-- ============ GAMES MARQUEE ============ -->
+<div class="marquee" aria-label="Ігри в клубах xBase">
+  <div class="marquee__row" data-marquee="1">
+    <span>Counter-Strike 2</span><b>✦</b><span>Dota 2</span><b>✦</b><span>Valorant</span><b>✦</b><span>Fortnite</span><b>✦</b><span>GTA V</span><b>✦</b><span>PUBG</span><b>✦</b><span>Apex Legends</span><b>✦</b><span>Rust</span><b>✦</b><span>Warzone 2</span><b>✦</b><span>CS 1.6</span><b>✦</b>
   </div>
-  <p class="booking__thanks" id="booking-thanks">Дякуємо! Ми передзвонимо Вам найближчим часом.</p>
-</section>
+</div>
 
-<section class="section" id="clubs">
-  <div class="section__head">
-    <div>
-      <div class="eyebrow" style="margin-bottom:12px">Клуби мережі</div>
-      <h2>Оберіть свою локацію</h2>
-    </div>
-    <p class="section__lead">Єдиний стандарт заліза й сервісу в кожному клубі. Різниця — у зонах, техніці та атмосфері.</p>
+<!-- ============ CLUBS ============ -->
+<section class="clubs" id="clubs" aria-labelledby="clubs-title">
+  <div class="section-head">
+    <p class="eyebrow reveal-up"><span>01</span> Клуби</p>
+    <h2 class="h-xl" id="clubs-title"><span class="split">П'ять точок</span> <span class="split split--dim">на мапі Харкова</span></h2>
+    <p class="section-head__aside reveal-up">Наведіть на клуб, щоб побачити адресу й&nbsp;зали. Натисніть — відкриється повна картка з&nbsp;залізом і&nbsp;цінами.</p>
   </div>
 
-  <div class="club-grid">
-
-    <a href="saltovka.html" class="club-card">
-      <div class="club-card__photo"><span class="club-card__photo-label">Фото клубу · Героїв Праці</span></div>
-      <div class="club-card__body">
-        <div class="club-card__tag">Салтівка</div>
-        <h3 class="club-card__title">Xbase м. Героїв Праці</h3>
-        <p class="club-card__desc">500 метрів від станції метро. Gaming, VIP Bootcamp та PS5 VIP на Салтівці.</p>
-        <span class="club-card__link">Детальніше →</span>
-      </div>
-    </a>
-
-    <a href="pobeda.html" class="club-card">
-      <div class="club-card__photo"><span class="club-card__photo-label">Фото клубу · Перемога</span></div>
-      <div class="club-card__body">
-        <div class="club-card__tag">50 м від метро</div>
-        <h3 class="club-card__title">Xbase м. Перемога</h3>
-        <p class="club-card__desc">Найближчий до метро клуб. Зони PlayStation 5 та PlayStation 4 Pro.</p>
-        <span class="club-card__link">Детальніше →</span>
-      </div>
-    </a>
-
-    <a href="holodka.html" class="club-card">
-      <div class="club-card__photo"><span class="club-card__photo-label">Фото клубу · Холодна Гора</span></div>
-      <div class="club-card__body">
-        <div class="club-card__tag">TV QLED 75"</div>
-        <h3 class="club-card__title">Xbase м. Холодна Гора</h3>
-        <p class="club-card__desc">Одразу за супермаркетом РОСТ. PS5 VIP на 75" 120Hz зі звуком 5.1 та кафе.</p>
-        <span class="club-card__link">Детальніше →</span>
-      </div>
-    </a>
-
-    <a href="palac.html" class="club-card">
-      <div class="club-card__photo">
-        <span class="club-card__photo-label">Фото клубу · Палац Спорту</span>
-        <span class="club-card__badge">Нова генерація</span>
-      </div>
-      <div class="club-card__body">
-        <div class="club-card__tag">RTX 5060 · 600Hz</div>
-        <h3 class="club-card__title">Xbase м. Палац Спорту</h3>
-        <p class="club-card__desc">Найновіше залізо мережі: Ryzen 7000, RX 9070XT та монітор 600Hz у SuperVIP.</p>
-        <span class="club-card__link">Детальніше →</span>
-      </div>
-    </a>
-
-    <a href="centr.html" class="club-card club-card--feature">
-      <div class="club-card__photo">
-        <img src="assets/img/cen-hero.webp" alt="XBase Центр" loading="lazy">
-        <span class="club-card__badge club-card__badge--solid">Lounge &amp; Cafe</span>
-      </div>
-      <div class="club-card__body">
-        <div class="club-card__tag">Навпроти ТРЦ Нікольський</div>
-        <h3 class="club-card__title">XBase Центр</h3>
-        <p class="club-card__desc">Найпреміальніший клуб: 7800X3D, монітори 500Hz, лаунж, тераса, кальяни, бар і кухня.</p>
-        <span class="club-card__link">Детальніше →</span>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<section class="about" id="about">
-  <div class="about-grid">
-    <div>
-      <h2>xBase, база кіберспорту</h2>
-      <p>xBase — це мережа сучасних комп'ютерних клубів у Харкові, де кожен гість може провести час із задоволенням, граючи на потужних комп'ютерах. У наших клубах є різні зони ПК, кожен зможе знайти собі комп'ютер за смаком та бюджетом. Крім цього є комфортабельні зони PlayStation.</p>
-    </div>
-    <div class="stats-grid">
-      <div class="stat"><div class="stat__num">5</div><div class="stat__label">клубів у місті</div></div>
-      <div class="stat"><div class="stat__num">24/7</div><div class="stat__label">без вихідних</div></div>
-      <div class="stat"><div class="stat__num">40+</div><div class="stat__label">ігор встановлено</div></div>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <a href="index.html" class="logo">x<span>Base</span></a>
-        <a href="mailto:info@xbase.cc" class="tel">info@xbase.cc</a>
-        <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener" class="tel">Instagram</a>
-      </div>
-      <div class="switcher">
-        <div class="switcher__list">
-          <a href="saltovka.html">Героїв Праці</a>
-          <a href="pobeda.html">Перемога</a>
-          <a href="holodka.html">Холодна Гора</a>
-          <a href="palac.html">Палац Спорту</a>
-          <a href="centr.html">Центр</a>
+  <div class="clubs__rail" id="clubsRail">
+    <article class="club" data-club="saltovka" tabindex="0" data-cursor="OPEN">
+      <div class="club__media"><img src="assets/img/club_saltovka.jpg" alt="Клуб xBase на Героїв Праці" loading="lazy" decoding="async"></div>
+      <div class="club__shade"></div>
+      <span class="club__idx">01</span>
+      <p class="club__vname" aria-hidden="true">Героїв Праці</p>
+      <div class="club__body">
+        <p class="club__metro">Салтівка · м. Героїв Праці</p>
+        <h3 class="club__name">Героїв Праці</h3>
+        <p class="club__addr"><svg class="ic"><use href="#i-pin"/></svg>вул. Академіка Павлова, 319А/1 · 2 поверх</p>
+        <ul class="chips"><li>Gaming</li><li>PRO</li><li>VIP Bootcamp</li><li>PS5</li><li>PS5 VIP</li></ul>
+        <div class="club__actions">
+          <button class="btn btn--light btn--sm" type="button" data-open-club="saltovka"><span class="btn__label">Детальніше</span><svg class="ic btn__arrow"><use href="#i-arrow-ur"/></svg></button>
+          <button class="btn btn--accent btn--sm" type="button" data-book="saltovka"><span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
         </div>
       </div>
+    </article>
+
+    <article class="club" data-club="pobeda" tabindex="0" data-cursor="OPEN">
+      <div class="club__media"><img src="assets/img/pobeda-gen.jpg" alt="Клуб xBase на Перемозі" loading="lazy" decoding="async"></div>
+      <div class="club__shade"></div>
+      <span class="club__idx">02</span>
+      <p class="club__vname" aria-hidden="true">Перемога</p>
+      <div class="club__body">
+        <p class="club__metro">м. Перемога · 50 м від метро</p>
+        <h3 class="club__name">Перемога</h3>
+        <p class="club__addr"><svg class="ic"><use href="#i-pin"/></svg>проспект Перемоги, 59 · біля с/м Basket</p>
+        <ul class="chips"><li>Gaming</li><li>PRO</li><li>VIP 360 Гц</li><li>PS5</li><li>PS4 Pro</li></ul>
+        <div class="club__actions">
+          <button class="btn btn--light btn--sm" type="button" data-open-club="pobeda"><span class="btn__label">Детальніше</span><svg class="ic btn__arrow"><use href="#i-arrow-ur"/></svg></button>
+          <button class="btn btn--accent btn--sm" type="button" data-book="pobeda"><span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </article>
+
+    <article class="club" data-club="holodka" tabindex="0" data-cursor="OPEN">
+      <div class="club__media"><img src="assets/img/ps5vip_light.jpg" alt="PS5 VIP у клубі xBase на Холодній Горі" loading="lazy" decoding="async"></div>
+      <div class="club__shade"></div>
+      <span class="club__idx">03</span>
+      <p class="club__vname" aria-hidden="true">Холодна Гора</p>
+      <div class="club__body">
+        <p class="club__metro">м. Холодна Гора · за с/м РОСТ</p>
+        <h3 class="club__name">Холодна Гора</h3>
+        <p class="club__addr"><svg class="ic"><use href="#i-pin"/></svg>провулок Володимира Усенка, 25А</p>
+        <ul class="chips"><li>Gaming</li><li>PRO</li><li>VIP</li><li>PS5</li><li>PS5 VIP 75″</li></ul>
+        <div class="club__actions">
+          <button class="btn btn--light btn--sm" type="button" data-open-club="holodka"><span class="btn__label">Детальніше</span><svg class="ic btn__arrow"><use href="#i-arrow-ur"/></svg></button>
+          <button class="btn btn--accent btn--sm" type="button" data-book="holodka"><span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </article>
+
+    <article class="club" data-club="palac" tabindex="0" data-cursor="OPEN">
+      <div class="club__media"><img src="assets/img/palac.jpg" alt="Клуб xBase біля Палацу Спорту" loading="lazy" decoding="async"></div>
+      <div class="club__shade"></div>
+      <span class="club__idx">04</span>
+      <p class="club__vname" aria-hidden="true">Палац Спорту</p>
+      <div class="club__body">
+        <p class="club__metro">м. Палац Спорту · нова генерація</p>
+        <h3 class="club__name">Палац Спорту</h3>
+        <p class="club__addr"><svg class="ic"><use href="#i-pin"/></svg>проспект Героїв Харкова, 190/1 · 50 м від метро</p>
+        <ul class="chips"><li>PRO</li><li>VIP 300 Гц</li><li>SuperVIP 600 Гц</li><li>PS5</li><li>PS5 VIP</li></ul>
+        <div class="club__actions">
+          <button class="btn btn--light btn--sm" type="button" data-open-club="palac"><span class="btn__label">Детальніше</span><svg class="ic btn__arrow"><use href="#i-arrow-ur"/></svg></button>
+          <button class="btn btn--accent btn--sm" type="button" data-book="palac"><span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </article>
+
+    <article class="club" data-club="centr" tabindex="0" data-cursor="OPEN">
+      <div class="club__media"><img src="assets/img/club_centr.jpg" alt="Клуб xBase Центр навпроти ТРЦ «Нікольський»" loading="lazy" decoding="async"></div>
+      <div class="club__shade"></div>
+      <span class="club__idx">05</span>
+      <p class="club__vname" aria-hidden="true">Центр</p>
+      <div class="club__body">
+        <p class="club__metro">Lounge &amp; Cafe · навпроти ТРЦ «Нікольський»</p>
+        <h3 class="club__name">Центр</h3>
+        <p class="club__addr"><svg class="ic"><use href="#i-pin"/></svg>вул. Григорія Сковороди, 5</p>
+        <ul class="chips"><li>PRO</li><li>VIP 300 Гц</li><li>SuperVIP 500 Гц</li><li>PS5</li><li>Кухня · бар</li></ul>
+        <div class="club__actions">
+          <button class="btn btn--light btn--sm" type="button" data-open-club="centr"><span class="btn__label">Детальніше</span><svg class="ic btn__arrow"><use href="#i-arrow-ur"/></svg></button>
+          <button class="btn btn--accent btn--sm" type="button" data-book="centr"><span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ZONES / PRICES ============ -->
+<section class="zones" id="zones" aria-labelledby="zones-title">
+  <div class="section-head">
+    <p class="eyebrow reveal-up"><span>02</span> Зали й тарифи</p>
+    <h2 class="h-xl" id="zones-title"><span class="split">Обери</span> <span class="split split--dim">свій рівень</span></h2>
+  </div>
+
+  <div class="tiers" id="tiers">
+    <article class="tier" data-tilt>
+      <div class="tier__glow"></div>
+      <p class="tier__tag">Зона</p>
+      <h3 class="tier__name">Gaming</h3>
+      <p class="tier__price"><small>від</small> <b data-from="gaming">70</b> <span>₴/год</span></p>
+      <ul class="tier__list"><li>Intel Core i3-12100F · RX 5700XT</li><li>Монітори 144–165 Гц</li><li>Героїв Праці · Перемога · Холодна Гора</li></ul>
+    </article>
+    <article class="tier" data-tilt>
+      <div class="tier__glow"></div>
+      <p class="tier__tag">Зона</p>
+      <h3 class="tier__name">PRO</h3>
+      <p class="tier__price"><small>від</small> <b data-from="pro">70</b> <span>₴/год</span></p>
+      <ul class="tier__list"><li>Core i5-12400F / Ryzen 5 7500F</li><li>Монітори 240–280 Гц</li><li>У всіх 5 клубах</li></ul>
+    </article>
+    <article class="tier tier--vip" data-tilt>
+      <div class="tier__glow"></div>
+      <p class="tier__tag">VIP · Bootcamp</p>
+      <h3 class="tier__name">VIP</h3>
+      <p class="tier__price"><small>від</small> <b data-from="vip">90</b> <span>₴/год</span></p>
+      <ul class="tier__list"><li>RTX 3060Ti / RX 9060 XT · 32 ГБ</li><li>Монітори 240–360 Гц</li><li>У всіх 5 клубах</li></ul>
+    </article>
+    <article class="tier tier--super" data-tilt>
+      <div class="tier__glow"></div>
+      <p class="tier__tag">Флагман</p>
+      <h3 class="tier__name">SuperVIP</h3>
+      <p class="tier__price"><small>від</small> <b data-from="supervip">150</b> <span>₴/год</span></p>
+      <ul class="tier__list"><li>Ryzen 7 7800X3D · RX 9070 XT</li><li>Монітори 500–600 Гц</li><li>Палац Спорту · Центр</li></ul>
+    </article>
+    <article class="tier tier--ps" data-tilt>
+      <div class="tier__glow"></div>
+      <p class="tier__tag">Консолі</p>
+      <h3 class="tier__name">PS5</h3>
+      <p class="tier__price"><small>від</small> <b data-from="ps5">150</b> <span>₴/год</span></p>
+      <ul class="tier__list"><li>Ігрові TV 55–75″</li><li>PS5 VIP — від <b data-from="ps5vip">250</b> ₴/год</li><li>У всіх 5 клубах</li></ul>
+    </article>
+  </div>
+
+  <div class="pricing reveal-up">
+    <div class="pricing__head">
+      <h3 class="h-sm">Пакети · ціни «від»</h3>
+      <div class="seg" role="tablist" aria-label="Дні тижня">
+        <button type="button" role="tab" aria-selected="true" data-days="0">Пн–Чт</button>
+        <button type="button" role="tab" aria-selected="false" data-days="1">Пт–Нд</button>
+        <i class="seg__thumb" aria-hidden="true"></i>
+      </div>
     </div>
-    <div class="footer__copy">© Комп'ютерний клуб xBase 2020-2026</div>
+    <div class="table-wrap" data-lenis-prevent>
+      <table class="ptable" id="ptable">
+        <thead><tr><th scope="col">Зона</th><th scope="col">1 год</th><th scope="col">3 год</th><th scope="col">5 год</th><th scope="col">День · 9 год</th><th scope="col">Ніч · 22–07</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="fineprint">Найнижча ціна серед клубів мережі, у гривнях. Тарифи в клубах відрізняються — точні ціни на сторінці кожного клубу. «День» діє 9 годин: купити можна з 10:00, згорає о 22:00.</p>
+  </div>
+</section>
+
+<!-- ============ HARDWARE ============ -->
+<section class="hw" id="hardware" aria-labelledby="hw-title">
+  <div class="hw__pin">
+    <div class="hw__bg-word" aria-hidden="true">POWER</div>
+    <div class="hw__intro">
+      <p class="eyebrow"><span>03</span> Залізо</p>
+      <h2 class="h-xl" id="hw-title"><span class="split">Power</span> <span class="split">your</span> <span class="split split--accent">game</span></h2>
+      <div class="seg seg--tiers" role="tablist" aria-label="Рівень конфігурації" id="hwTabs">
+        <button type="button" role="tab" aria-selected="true" data-tier="0">PRO</button>
+        <button type="button" role="tab" aria-selected="false" data-tier="1">VIP</button>
+        <button type="button" role="tab" aria-selected="false" data-tier="2">SuperVIP</button>
+        <i class="seg__thumb" aria-hidden="true"></i>
+      </div>
+      <p class="fineprint" id="hwSource">Конфігурація PRO — клуб «Палац Спорту».</p>
+    </div>
+
+    <div class="hw__stage" id="hwStage" data-cursor="DRAG">
+      <div class="hw__glow" aria-hidden="true"></div>
+      <div class="pc" id="pc" aria-hidden="true">
+        <div class="pc__box">
+          <div class="pc__f pc__front">
+            <div class="pc__mesh"></div>
+            <div class="fan"><i></i></div><div class="fan"><i></i></div><div class="fan"><i></i></div>
+            <div class="pc__power"></div>
+          </div>
+          <div class="pc__f pc__back"></div>
+          <div class="pc__f pc__right"></div>
+          <div class="pc__f pc__top"><div class="pc__topvent"></div></div>
+          <div class="pc__f pc__bottom"></div>
+          <div class="pc__f pc__board">
+            <div class="pc__cpu"><div class="pc__cpu-ring"></div></div>
+            <div class="pc__ram"><i></i><i></i><i></i><i></i></div>
+            <div class="pc__psu"></div>
+          </div>
+          <div class="pc__f pc__gpu"><div class="gfan"></div><div class="gfan"></div><div class="gfan"></div><span>XBASE</span></div>
+          <div class="pc__f pc__glass"></div>
+        </div>
+      </div>
+      <div class="pc__shadow" aria-hidden="true"></div>
+
+      <ul class="specs" id="specs" aria-live="polite">
+        <li class="spec spec--cpu"><svg class="ic"><use href="#i-cpu"/></svg><span class="spec__k">Процесор</span><b class="spec__v" data-k="cpu">AMD Ryzen 5 7500F</b></li>
+        <li class="spec spec--gpu"><svg class="ic"><use href="#i-gpu"/></svg><span class="spec__k">Відеокарта</span><b class="spec__v" data-k="gpu">RTX 5060</b></li>
+        <li class="spec spec--ram"><svg class="ic"><use href="#i-ram"/></svg><span class="spec__k">Пам'ять</span><b class="spec__v" data-k="ram">16GB DDR5</b></li>
+        <li class="spec spec--mon"><svg class="ic"><use href="#i-monitor"/></svg><span class="spec__k">Монітор</span><b class="spec__v" data-k="monitor">Lenovo Legion 24" 240Hz</b></li>
+        <li class="spec spec--mouse"><svg class="ic"><use href="#i-keyboard"/></svg><span class="spec__k">Периферія</span><b class="spec__v" data-k="periph">Bloody S87, Bloody R72 Pro Duo, HyperX Cloud Alpha</b></li>
+        <li class="spec spec--head"><svg class="ic"><use href="#i-chair"/></svg><span class="spec__k">Крісло</span><b class="spec__v" data-k="chair">Cougar Armor EVO S</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOTCAMP ============ -->
+<section class="bootcamp" id="bootcamp" aria-labelledby="bc-title">
+  <div class="bootcamp__pin">
+    <div class="bootcamp__beams" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="bootcamp__stage">
+      <p class="eyebrow eyebrow--center"><span>04</span> VIP зона</p>
+      <h2 class="bootcamp__title" id="bc-title">BOOTCAMP</h2>
+      <p class="bootcamp__sub">Окрема VIP-зона в&nbsp;кожному клубі xBase — для тих, хто грає всерйоз.</p>
+    </div>
+  </div>
+
+  <div class="bootcamp__content">
+    <div class="bc-gallery">
+      <figure class="bc-shot reveal-clip"><img src="assets/img/gallery/vip1.jpg" alt="VIP-зона xBase" loading="lazy" decoding="async"></figure>
+      <figure class="bc-shot bc-shot--tall reveal-clip"><img src="assets/img/gallery/vip2.jpg" alt="Місця у VIP-зоні xBase" loading="lazy" decoding="async"></figure>
+      <figure class="bc-shot reveal-clip"><img src="assets/img/gallery/vip3.jpg" alt="VIP-зона xBase, вигляд на ігрові місця" loading="lazy" decoding="async"></figure>
+    </div>
+    <div class="bc-facts">
+      <div class="bc-fact reveal-up"><b>240–360<small>Гц</small></b><p>Монітори VIP: LG IPS 27″, BenQ 25″, Asus 24″ 300&nbsp;Гц і&nbsp;BenQ XL2566K 360&nbsp;Гц.</p></div>
+      <div class="bc-fact reveal-up"><b>32<small>ГБ</small></b><p>Оперативної пам'яті в&nbsp;кожній VIP-збірці: від&nbsp;Core i7-12700 + RTX&nbsp;3060Ti до&nbsp;Ryzen&nbsp;7&nbsp;7700 + RX&nbsp;9060&nbsp;XT.</p></div>
+      <div class="bc-fact reveal-up"><b>500–600<small>Гц</small></b><p>SuperVIP на Палаці Спорту та в&nbsp;Центрі: Ryzen&nbsp;7 7800X3D, RX&nbsp;9070&nbsp;XT, Logitech G&nbsp;PRO X Superlight&nbsp;2.</p></div>
+      <div class="bc-cta reveal-up">
+        <p><span>VIP</span> від <b data-from="vip">90</b> ₴/год <span>SuperVIP</span> від <b data-from="supervip">150</b> ₴/год</p>
+        <button class="btn btn--accent btn--lg magnetic" type="button" data-book data-book-zone="vip" data-cursor="BOOK"><span class="btn__label">Забронювати Bootcamp</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLAYSTATION ============ -->
+<section class="ps" id="playstation" aria-labelledby="ps-title">
+  <div class="ps__head">
+    <p class="eyebrow"><span>05</span> PlayStation 5</p>
+    <h2 class="ps__title" id="ps-title">
+      <span class="ps__row" data-dir="1">PLAY&nbsp;·&nbsp;PLAY&nbsp;·&nbsp;PLAY&nbsp;·&nbsp;PLAY&nbsp;·&nbsp;</span>
+      <span class="ps__row ps__row--outline" data-dir="-1">TOGETHER.&nbsp;TOGETHER.&nbsp;TOGETHER.&nbsp;</span>
+    </h2>
+    <p class="ps__lead reveal-up">PlayStation&nbsp;5 на&nbsp;ігрових TV — кличте друзів на&nbsp;диван. PS5 від&nbsp;<b data-from="ps5">150</b>&nbsp;₴/год, PS5&nbsp;VIP від&nbsp;<b data-from="ps5vip">250</b>&nbsp;₴/год.</p>
+  </div>
+
+  <div class="ps__h">
+    <div class="ps__track" id="psTrack">
+      <article class="tv">
+        <div class="tv__screen"><img src="assets/img/gallery/ps51.jpg" alt="Зона PlayStation 5 у xBase на Героїв Праці" loading="lazy" decoding="async"></div>
+        <p class="tv__tag">PS5 VIP</p><h3 class="tv__name">Ігровий TV 65″ · 144 Гц</h3><p class="tv__club"><svg class="ic"><use href="#i-pin"/></svg>Героїв Праці</p>
+      </article>
+      <article class="tv">
+        <div class="tv__screen"><img src="assets/img/ps5vip_light.jpg" alt="PS5 VIP з QLED 75 дюймів" loading="lazy" decoding="async"></div>
+        <p class="tv__tag">PS5 VIP</p><h3 class="tv__name">QLED 75″ · 120 Гц · звук 5.1</h3><p class="tv__club"><svg class="ic"><use href="#i-pin"/></svg>Холодна Гора</p>
+      </article>
+      <article class="tv">
+        <div class="tv__screen"><img src="assets/img/gallery/ps53.jpg" alt="PlayStation 5 і телевізор 65 дюймів у xBase" loading="lazy" decoding="async"></div>
+        <p class="tv__tag">PS5</p><h3 class="tv__name">TV 65″ · 120 Гц</h3><p class="tv__club"><svg class="ic"><use href="#i-pin"/></svg>Героїв Праці · Перемога</p>
+      </article>
+      <article class="tv">
+        <div class="tv__screen tv__screen--gfx" aria-hidden="true"><span class="tv__gfx-label">miniLED</span></div>
+        <p class="tv__tag">PS5 / PS5 VIP</p><h3 class="tv__name">65″ miniLED · до 144 Гц</h3><p class="tv__club"><svg class="ic"><use href="#i-pin"/></svg>Палац Спорту</p>
+      </article>
+      <article class="tv tv--text">
+        <div class="tv__screen tv__screen--text"><svg class="ic"><use href="#i-gamepad"/></svg><p>Також: PS5 + TV 55″ на&nbsp;Холодній Горі та в&nbsp;Центрі, PS4&nbsp;Pro + TV&nbsp;55″ на&nbsp;Перемозі.</p></div>
+        <button class="btn btn--accent btn--lg magnetic" type="button" data-book data-book-zone="ps5" data-cursor="BOOK"><span class="btn__label">Забронювати PS5</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="contacts" id="contacts" aria-labelledby="ct-title">
+  <div class="section-head">
+    <p class="eyebrow reveal-up"><span>06</span> Контакти</p>
+    <h2 class="h-xl" id="ct-title"><span class="split">Дзвони.</span> <span class="split split--dim">Пиши. Приходь.</span></h2>
+    <p class="section-head__aside reveal-up">Залиште заявку на сайті або зателефонуйте чи напишіть у&nbsp;Telegram потрібного клубу — адміністратор підтвердить місце.</p>
+  </div>
+
+  <div class="clist">
+    <article class="crow reveal-up">
+      <span class="crow__i">01</span>
+      <h3 class="crow__name"><a href="saltovka.html">Героїв Праці</a></h3>
+      <p class="crow__addr">вул. Академіка Павлова, 319А/1, 2 поверх</p>
+      <div class="crow__links">
+        <a href="tel:+380667759119" class="link-u"><svg class="ic"><use href="#i-phone"/></svg>(066) 775-91-19</a>
+        <a href="https://t.me/xbase_cyber_club" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-send"/></svg>@xbase_cyber_club</a>
+        <a href="saltovka.html" class="link-u"><svg class="ic"><use href="#i-arrow-ur"/></svg>Сторінка клубу</a>
+      </div>
+    </article>
+    <article class="crow reveal-up">
+      <span class="crow__i">02</span>
+      <h3 class="crow__name"><a href="pobeda.html">Перемога</a></h3>
+      <p class="crow__addr">проспект Перемоги, 59 · цоколь, біля с/м Basket</p>
+      <div class="crow__links">
+        <a href="tel:+380667759229" class="link-u"><svg class="ic"><use href="#i-phone"/></svg>(066) 775-92-29</a>
+        <a href="https://t.me/xbase_pobeda" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-send"/></svg>@xbase_pobeda</a>
+        <a href="pobeda.html" class="link-u"><svg class="ic"><use href="#i-arrow-ur"/></svg>Сторінка клубу</a>
+      </div>
+    </article>
+    <article class="crow reveal-up">
+      <span class="crow__i">03</span>
+      <h3 class="crow__name"><a href="holodka.html">Холодна Гора</a></h3>
+      <p class="crow__addr">провулок Володимира Усенка, 25А · за с/м РОСТ</p>
+      <div class="crow__links">
+        <a href="tel:+380667759339" class="link-u"><svg class="ic"><use href="#i-phone"/></svg>(066) 775-93-39</a>
+        <a href="https://t.me/xbase_hg" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-send"/></svg>@xbase_hg</a>
+        <a href="holodka.html" class="link-u"><svg class="ic"><use href="#i-arrow-ur"/></svg>Сторінка клубу</a>
+      </div>
+    </article>
+    <article class="crow reveal-up">
+      <span class="crow__i">04</span>
+      <h3 class="crow__name"><a href="palac.html">Палац Спорту</a></h3>
+      <p class="crow__addr">проспект Героїв Харкова, 190/1 · 50 м від метро</p>
+      <div class="crow__links">
+        <a href="tel:+380667759449" class="link-u"><svg class="ic"><use href="#i-phone"/></svg>(066) 775-94-49</a>
+        <a href="https://t.me/xbase_palac" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-send"/></svg>@xbase_palac</a>
+        <a href="palac.html" class="link-u"><svg class="ic"><use href="#i-arrow-ur"/></svg>Сторінка клубу</a>
+      </div>
+    </article>
+    <article class="crow reveal-up">
+      <span class="crow__i">05</span>
+      <h3 class="crow__name"><a href="centr.html">Центр</a></h3>
+      <p class="crow__addr">вул. Григорія Сковороди, 5 · навпроти ТРЦ «Нікольський»</p>
+      <div class="crow__links">
+        <a href="tel:+380667759559" class="link-u"><svg class="ic"><use href="#i-phone"/></svg>(066) 775-95-59</a>
+        <a href="https://t.me/xbase_centr" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-send"/></svg>@xbase_centr</a>
+        <a href="centr.html" class="link-u"><svg class="ic"><use href="#i-arrow-ur"/></svg>Сторінка клубу</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="ft-title">
+  <div class="footer__cta">
+    <h2 class="footer__claim" id="ft-title"><span class="split">PLAY.</span> <span class="split">COMPETE.</span> <span class="split split--accent">WIN.</span></h2>
+    <button class="btn btn--accent btn--xl magnetic" type="button" data-book data-cursor="BOOK"><span class="btn__label">Забронювати місце</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+  </div>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h3 class="footer__h">Навігація</h3>
+      <a href="#clubs" class="link-u">Клуби</a><a href="#zones" class="link-u">Зали й тарифи</a><a href="#hardware" class="link-u">Залізо</a><a href="#bootcamp" class="link-u">Bootcamp</a><a href="#playstation" class="link-u">PlayStation</a><a href="menu.html" class="link-u">Меню кафе · Центр</a>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__h">Клуби</h3>
+      <a href="saltovka.html" class="link-u">Героїв Праці · 775-91-19</a><a href="pobeda.html" class="link-u">Перемога · 775-92-29</a><a href="holodka.html" class="link-u">Холодна Гора · 775-93-39</a><a href="palac.html" class="link-u">Палац Спорту · 775-94-49</a><a href="centr.html" class="link-u">Центр · 775-95-59</a>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__h">Соцмережі</h3>
+      <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-insta"/></svg>Instagram · xbase.cc</a>
+      <a href="https://t.me/xbase_cyber_club" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-send"/></svg>Telegram</a>
+      <a href="mailto:info@xbase.cc" class="link-u"><svg class="ic"><use href="#i-mail"/></svg>info@xbase.cc</a>
+    </div>
+  </div>
+
+  <div class="footer__mega" aria-hidden="true"><span>X</span><span>B</span><span>A</span><span>S</span><span>E</span></div>
+  <div class="footer__bar">
+    <span>© 2020–<span data-year>2026</span> Комп'ютерний клуб xBase · Харків</span>
+    <a href="#top" class="link-u">Нагору ↑</a>
   </div>
 </footer>
 
+<!-- ============ CLUB DETAIL (fullscreen) ============ -->
+<div class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="detailTitle" aria-hidden="true" data-lenis-prevent>
+  <button class="icon-btn detail__close" type="button" data-close-detail aria-label="Закрити"><svg class="ic"><use href="#i-x"/></svg></button>
+  <div class="detail__scroll">
+    <div class="detail__hero">
+      <div class="detail__media"><img id="detailImg" alt=""></div>
+      <div class="detail__hero-text">
+        <p class="eyebrow" id="detailOfficial"></p>
+        <h2 class="detail__title" id="detailTitle"></h2>
+        <p class="detail__addr" id="detailAddr"></p>
+        <div class="detail__links" id="detailLinks"></div>
+      </div>
+    </div>
+    <div class="detail__zones" id="detailZones"></div>
+    <div class="detail__foot">
+      <button class="btn btn--accent btn--lg" type="button" id="detailBook"><span class="btn__label">Забронювати в цьому клубі</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+      <a class="btn btn--ghost btn--lg" id="detailPage" href="#"><span class="btn__label">Сторінка клубу</span><svg class="ic btn__arrow"><use href="#i-arrow-ur"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ BOOKING MODAL ============ -->
+<div class="modal" id="booking" role="dialog" aria-modal="true" aria-labelledby="bookTitle" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel" data-lenis-prevent>
+    <button class="icon-btn modal__close" type="button" data-close-modal aria-label="Закрити"><svg class="ic"><use href="#i-x"/></svg></button>
+
+    <form class="bform" id="bookForm" novalidate>
+      <header class="bform__head">
+        <p class="eyebrow"><span>●</span> Бронювання</p>
+        <h2 class="bform__title" id="bookTitle">Забронювати місце</h2>
+      </header>
+
+      <fieldset class="field">
+        <legend>Оберіть клуб</legend>
+        <div class="opts opts--clubs" id="optClubs"></div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Оберіть тип місця</legend>
+        <div class="opts" id="optZones"></div>
+      </fieldset>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fDate">Дата</label>
+          <input class="input" type="date" id="fDate" name="date" required>
+        </div>
+        <div class="field">
+          <label for="fTime">Час</label>
+          <select class="input" id="fTime" name="time" required></select>
+        </div>
+      </div>
+
+      <fieldset class="field">
+        <legend>Скільки грати</legend>
+        <div class="opts opts--pkg" id="optPkg"></div>
+      </fieldset>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fName">Ім'я</label>
+          <input class="input" type="text" id="fName" name="name" autocomplete="given-name" placeholder="Як до вас звертатися" required minlength="2" maxlength="40">
+        </div>
+        <div class="field">
+          <label for="fPhone">Телефон</label>
+          <input class="input" type="tel" id="fPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380 (__) ___-__-__" required>
+        </div>
+      </div>
+
+      <div class="bform__summary" id="bSummary" aria-live="polite"></div>
+
+      <button class="btn btn--accent btn--lg btn--block" type="submit" id="bSubmit"><span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+      <p class="fineprint">Надсилаючи заявку, ви погоджуєтесь, що адміністратор клубу зателефонує вам для підтвердження.</p>
+    </form>
+
+    <div class="bresult" id="bResult" hidden tabindex="-1"></div>
+  </div>
+</div>
+
 <script src="assets/js/config.js"></script>
-<script src="assets/js/app.js"></script>
-<script>
-  XBase.initBooking("#booking-form", "#booking-thanks");
-</script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

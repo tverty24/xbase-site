@@ -1,71 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Меню кафе XBase Центр</title>
 <meta name="description" content="Меню кафе XBase Центр: бургери, шаурма, закуски, гарячі та холодні напої, коктейлі, пиво, віскі та ром.">
-<link rel="stylesheet" href="assets/css/style.css?v=3">
+<meta name="theme-color" content="#060708">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:site_name" content="xBase">
+<meta property="og:title" content="Меню кафе XBase Центр">
+<meta property="og:description" content="Меню кафе XBase Центр: бургери, шаурма, закуски, гарячі та холодні напої, коктейлі, пиво, віскі та ром.">
+<meta property="og:image" content="assets/og-image.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css?v=4">
 </head>
-<body class="no-sticky-cta">
+<body data-club="centr">
 
-<header class="header">
-  <div class="header__bar">
-    <a href="centr.html" class="header__back" aria-label="До клубу">←</a>
-    <a href="index.html" class="logo">x<span>Base</span></a>
-    <span class="social-link">Кафе · XBase Центр</span>
-    <div class="header__actions">
-      <a href="centr.html" class="social-link">← До клубу</a>
-      <a href="tel:0667759559" class="tel-link">(066) 775-95-59</a>
-      <a href="centr.html#booking" class="btn-cta header__mobile-cta">Забронювати</a>
-    </div>
-  </div>
+<a class="skip" href="#main">Перейти до вмісту</a>
+
+<!-- ============ ICON SPRITE (Lucide, ISC) ============ -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+  <symbol id="i-gpu" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+  <symbol id="i-ram" viewBox="0 0 24 24"><path d="M6 19v-3M10 19v-3M14 19v-3M18 19v-3M8 11V9M16 11V9M12 11V9M2 15h20"/><path d="M2 7a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1.1a2 2 0 0 0 0 3.837V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5.1a2 2 0 0 0 0-3.837Z"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-keyboard" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/></symbol>
+  <symbol id="i-chair" viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M5 18v2M19 18v2"/></symbol>
+  <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <filter id="fx-distort" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.03" numOctaves="1" seed="4" result="noise"/>
+    <feDisplacementMap id="fxDisp" in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<div class="cursor" id="cursor" aria-hidden="true"><div class="cursor__ring"><span class="cursor__label"></span></div><div class="cursor__dot"></div></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html" aria-label="xBase — на головну">
+    <svg class="logo-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M4 4h9l7 10 7-10h9L25 20l11 16h-9l-7-10-7 10H4l11-16Z"/></svg>
+    <span>XBASE</span>
+  </a>
+  <nav class="nav__links" aria-label="Основна навігація">
+    <a href="centr.html">← Клуб Центр</a>
+    <a href="#menu">Меню</a>
+    <a href="centr.html#contacts">Контакти</a>
+  </nav>
+  <button class="btn btn--accent btn--sm magnetic nav__cta" type="button" data-book="centr" data-cursor="BOOK">
+    <span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg>
+  </button>
+  <button class="burger" id="burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
 </header>
 
-<section class="menu-hero">
-  <div class="menu-hero__glow"></div>
-  <div class="menu-hero__inner">
-    <div class="eyebrow">Кухня · Бар · Коктейлі</div>
-    <h1>Меню кафе XBase Центр</h1>
-    <p>Кухня працює весь час роботи клубу. Замовлення приносимо прямо на ігрове місце — скажіть адміністратору номер ПК.</p>
+<div class="mmenu" id="mmenu" aria-hidden="true">
+  <nav class="mmenu__links" aria-label="Мобільна навігація">
+    <a href="centr.html"><small>01</small>← Клуб Центр</a>
+    <a href="#menu"><small>02</small>Меню</a>
+    <a href="centr.html#contacts"><small>03</small>Контакти</a>
+  </nav>
+  <div class="mmenu__foot">
+    <button class="btn btn--accent btn--block" type="button" data-book="centr"><span class="btn__label">Забронювати місце</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+    <div class="mmenu__social">
+      <a href="index.html">← Усі клуби</a>
+      <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:info@xbase.cc">info@xbase.cc</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="phero phero--short" id="top" aria-labelledby="page-title">
+  <div class="phero__media"></div>
+  <div class="phero__inner">
+    <p class="eyebrow"><span>●</span> Кухня · Бар · Коктейлі</p>
+    <h1 class="phero__title" id="page-title"><span class="split">Меню</span> <span class="split split--dim">кафе</span></h1>
+    <p class="phero__lead">XBase Центр, вул. Григорія Сковороди, 5. Кухня працює весь час роботи клубу. Замовлення приносимо прямо на ігрове місце — скажіть адміністратору номер ПК.</p>
+    <div class="phero__actions">
+      <a class="btn btn--ghost btn--lg magnetic" href="tel:+380667759559"><svg class="ic"><use href="#i-phone"/></svg><span class="btn__label">(066) 775-95-59</span></a>
+      <a class="btn btn--light btn--lg magnetic" href="centr.html"><span class="btn__label">До клубу</span><svg class="ic btn__arrow"><use href="#i-arrow-ur"/></svg></a>
+    </div>
   </div>
 </section>
 
-<section class="menu-toolbar" id="menu">
-  <div class="menu-toolbar__sticky">
-    <input type="search" class="search-input" style="width:100%;box-sizing:border-box;padding:16px 20px" placeholder="Пошук страви, напою чи коктейлю">
-    <div class="menu-cats"></div>
+<section class="psec" id="menu" aria-label="Меню">
+  <div class="menu-sticky">
+    <div class="toolbar">
+      <input type="search" class="search" placeholder="Пошук страви, напою чи коктейлю" aria-label="Пошук у меню">
+      <div class="filters" role="group" aria-label="Категорія"></div>
+    </div>
   </div>
   <div class="menu-grid"></div>
-  <p class="list-footnote"></p>
+  <p class="list-note" aria-live="polite"></p>
 </section>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <a href="centr.html" class="logo">x<span>Base</span> <small>Центр</small></a>
-        <span class="addr">вул. Григорія Сковороди, 5</span>
-        <a href="tel:0667759559" class="tel">(066) 775-95-59</a>
-      </div>
-      <div class="footer__switcher">
-        <span>Клуби мережі</span>
-        <div class="switcher">
-          <div class="switcher__list">
-            <a href="saltovka.html">Героїв Праці</a>
-            <a href="pobeda.html">Перемога</a>
-            <a href="holodka.html">Холодна Гора</a>
-            <a href="palac.html">Палац Спорту</a>
-            <a href="centr.html" class="active">Центр</a>
-          </div>
-        </div>
-      </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="ft-title">
+  <div class="footer__cta">
+    <h2 class="footer__claim" id="ft-title"><span class="split">PLAY.</span> <span class="split">COMPETE.</span> <span class="split split--accent">WIN.</span></h2>
+    <button class="btn btn--accent btn--xl magnetic" type="button" data-book="centr" data-cursor="BOOK"><span class="btn__label">Забронювати місце</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+  </div>
+
+  <div class="footer__grid">
+    <div class="footer__col">
+      <h3 class="footer__h">Навігація</h3>
+      <a href="index.html" class="link-u">Головна</a><a href="index.html#clubs" class="link-u">Усі клуби</a><a href="index.html#zones" class="link-u">Зали й тарифи</a><a href="menu.html" class="link-u">Меню кафе · Центр</a>
     </div>
-    <div class="footer__copy">© Комп'ютерний клуб xBase 2020-2026</div>
+    <div class="footer__col">
+      <h3 class="footer__h">Клуби</h3>
+      <a href="saltovka.html" class="link-u">Героїв Праці · 775-91-19</a><a href="pobeda.html" class="link-u">Перемога · 775-92-29</a><a href="holodka.html" class="link-u">Холодна Гора · 775-93-39</a><a href="palac.html" class="link-u">Палац Спорту · 775-94-49</a><a href="centr.html" class="link-u">Центр · 775-95-59</a>
+    </div>
+    <div class="footer__col">
+      <h3 class="footer__h">Соцмережі</h3>
+      <a href="https://www.instagram.com/xbase.cc" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-insta"/></svg>Instagram · xbase.cc</a>
+      <a href="https://t.me/xbase_cyber_club" target="_blank" rel="noopener" class="link-u"><svg class="ic"><use href="#i-send"/></svg>Telegram</a>
+      <a href="mailto:info@xbase.cc" class="link-u"><svg class="ic"><use href="#i-mail"/></svg>info@xbase.cc</a>
+    </div>
+  </div>
+
+  <div class="footer__mega" aria-hidden="true"><span>X</span><span>B</span><span>A</span><span>S</span><span>E</span></div>
+  <div class="footer__bar">
+    <span>© 2020–<span data-year>2026</span> Комп'ютерний клуб xBase · Харків</span>
+    <a href="#top" class="link-u">Нагору ↑</a>
   </div>
 </footer>
 
+<!-- ============ BOOKING MODAL ============ -->
+<div class="modal" id="booking" role="dialog" aria-modal="true" aria-labelledby="bookTitle" aria-hidden="true">
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__panel" data-lenis-prevent>
+    <button class="icon-btn modal__close" type="button" data-close-modal aria-label="Закрити"><svg class="ic"><use href="#i-x"/></svg></button>
+
+    <form class="bform" id="bookForm" novalidate>
+      <header class="bform__head">
+        <p class="eyebrow"><span>●</span> Бронювання</p>
+        <h2 class="bform__title" id="bookTitle">Забронювати місце</h2>
+      </header>
+
+      <fieldset class="field">
+        <legend>Оберіть клуб</legend>
+        <div class="opts opts--clubs" id="optClubs"></div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Оберіть тип місця</legend>
+        <div class="opts" id="optZones"></div>
+      </fieldset>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fDate">Дата</label>
+          <input class="input" type="date" id="fDate" name="date" required>
+        </div>
+        <div class="field">
+          <label for="fTime">Час</label>
+          <select class="input" id="fTime" name="time" required></select>
+        </div>
+      </div>
+
+      <fieldset class="field">
+        <legend>Скільки грати</legend>
+        <div class="opts opts--pkg" id="optPkg"></div>
+      </fieldset>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="fName">Ім'я</label>
+          <input class="input" type="text" id="fName" name="name" autocomplete="given-name" placeholder="Як до вас звертатися" required minlength="2" maxlength="40">
+        </div>
+        <div class="field">
+          <label for="fPhone">Телефон</label>
+          <input class="input" type="tel" id="fPhone" name="phone" autocomplete="tel" inputmode="tel" placeholder="+380 (__) ___-__-__" required>
+        </div>
+      </div>
+
+      <div class="bform__summary" id="bSummary" aria-live="polite"></div>
+
+      <button class="btn btn--accent btn--lg btn--block" type="submit" id="bSubmit"><span class="btn__label">Забронювати</span><svg class="ic btn__arrow"><use href="#i-arrow"/></svg></button>
+      <p class="fineprint">Надсилаючи заявку, ви погоджуєтесь, що адміністратор клубу зателефонує вам для підтвердження.</p>
+    </form>
+
+    <div class="bresult" id="bResult" hidden tabindex="-1"></div>
+  </div>
+</div>
+
 <script src="assets/js/config.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
 <script src="assets/js/app.js"></script>
 <script>
   XBase.initMenu("#menu");
