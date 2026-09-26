@@ -133,21 +133,40 @@ ul { margin: 0; padding: 0; list-style: none; }
 .js .split .ch, .js .split-hero .ch { transform: translate3d(0, 115%, 0) rotate(8deg); opacity: 0; transition: transform 1.1s var(--ease), opacity .8s var(--ease); transition-delay: calc(var(--i) * 28ms + var(--d, 0s)); }
 .js .is-in .ch, .js .split.is-in .ch { transform: none; opacity: 1; }
 
-/* ---------- Preloader ---------- */
+/* ---------- Preloader: логотип, X якого розколюється навпіл ---------- */
+/* Шов іде по діагоналі між білою та зеленою половинами X: нахил 0.68 (dx/dy),
+   а точка шва на логотипі зміщена від його центру вліво на 10.05% ширини. */
 .loader { display: none; }
-.js .loader {
-  position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; background: #030304;
-  clip-path: inset(0 0 0 0); transition: clip-path 1.1s var(--ease-io);
+.js .loader { position: fixed; inset: 0; z-index: 900; display: block; pointer-events: none; }
+/* половини більші за екран (inset: -100vmax), щоб під час руху не було видно їхніх країв;
+   напіввисота половини = 50vh + 100vmax, тож зсув шва від центру = 0.68 × це = 34vh + 68vmax */
+.loader__half {
+  position: absolute; inset: -100vmax; display: grid; place-items: center; background: #030304; pointer-events: auto;
+  transition: transform 1.25s var(--ease-io);
 }
-.loader.is-done { clip-path: inset(0 0 100% 0); pointer-events: none; }
-.loader__inner { width: min(560px, 84vw); }
-.loader__word { display: flex; justify-content: space-between; font-family: var(--f-display); font-weight: 900; font-size: clamp(56px, 13vw, 150px); line-height: 1; letter-spacing: -.02em; overflow: hidden; }
-.loader__word span { display: inline-block; transform: translateY(105%); animation: ldUp 1s var(--ease) forwards; }
-.loader__word span:nth-child(2) { animation-delay: .06s; } .loader__word span:nth-child(3) { animation-delay: .12s; }
-.loader__word span:nth-child(4) { animation-delay: .18s; } .loader__word span:nth-child(5) { animation-delay: .24s; color: var(--accent); }
-.loader.is-done .loader__word span { transform: translateY(-105%); transition: transform .8s var(--ease-io); animation: none; }
-@keyframes ldUp { to { transform: none; } }
-.loader__meta { display: flex; justify-content: space-between; margin-top: 18px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+.loader__half--l { clip-path: polygon(0 0, calc(50% - 34vh - 68vmax + 1.5px) 0, calc(50% + 34vh + 68vmax + 1.5px) 100%, 0 100%); }
+.loader__half--r { clip-path: polygon(calc(50% - 34vh - 68vmax) 0, 100% 0, 100% 100%, calc(50% + 34vh + 68vmax) 100%); }
+@supports (height: 1dvh) {
+  .loader__half--l { clip-path: polygon(0 0, calc(50% - 34dvh - 68vmax + 1.5px) 0, calc(50% + 34dvh + 68vmax + 1.5px) 100%, 0 100%); }
+  .loader__half--r { clip-path: polygon(calc(50% - 34dvh - 68vmax) 0, 100% 0, 100% 100%, calc(50% + 34dvh + 68vmax) 100%); }
+}
+.loader.is-done .loader__half { transition-delay: .15s; }
+.loader.is-done .loader__half--l { transform: translate(calc(var(--split, 100vmax) * -.827), calc(var(--split, 100vmax) * .562)); }
+.loader.is-done .loader__half--r { transform: translate(calc(var(--split, 100vmax) * .827), calc(var(--split, 100vmax) * -.562)); }
+@media (prefers-reduced-motion: reduce) {
+  .loader.is-done .loader__half--l, .loader.is-done .loader__half--r { transform: none; opacity: 0; transition: opacity .3s; }
+}
+.loader__logo {
+  display: block; width: min(440px, 64vw, 56vh); aspect-ratio: 1762 / 1554; translate: 10.05% 0;
+  opacity: 0; transform: scale(.92); animation: ldLogo 1s var(--ease) .1s forwards;
+}
+@keyframes ldLogo { to { opacity: 1; transform: none; } }
+.loader__ui {
+  position: absolute; left: 50%; bottom: max(8vh, 40px); width: min(320px, 70vw); transform: translateX(-50%);
+  transition: opacity .35s;
+}
+.loader.is-done .loader__ui { opacity: 0; }
+.loader__meta { display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
 .loader__count { color: var(--text); }
 .loader__bar { margin-top: 12px; height: 2px; background: rgba(255,255,255,.08); overflow: hidden; }
 .loader__bar i { display: block; height: 100%; width: 100%; background: var(--accent); transform-origin: left; transform: scaleX(0); box-shadow: 0 0 20px var(--accent); }

@@ -132,11 +132,13 @@
       else {
         store.set('xb-visited', '1');
         setTimeout(() => {
+          // половини X роз'їжджаються перпендикулярно до шва — достатньо, щоб піти за край екрана
+          loader.style.setProperty('--split', `${Math.ceil(Math.hypot(innerWidth, innerHeight) * 0.62)}px`);
           loader.classList.add('is-done');
           document.body.classList.remove('is-loading');
           done();
-          setTimeout(() => loader.remove(), 1200);
-        }, reduced ? 0 : 180);
+          setTimeout(() => loader.remove(), reduced ? 400 : 1600);
+        }, reduced ? 0 : 250);
       }
     }
     requestAnimationFrame(step);
