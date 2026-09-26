@@ -472,7 +472,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ==========================================================================
    HARDWARE
    ========================================================================== */
-.hw { position: relative; height: 320vh; background: radial-gradient(80% 60% at 70% 50%, #0e1116, var(--bg) 70%); }
+.hw { position: relative; height: 170vh; background: radial-gradient(80% 60% at 70% 50%, #0e1116, var(--bg) 70%); }
 .hw__pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; padding: var(--nav-h) var(--g) 40px; }
 .hw__bg-word {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) translateX(var(--bgx, 0));

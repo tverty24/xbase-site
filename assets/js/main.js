@@ -481,7 +481,7 @@ void main(){
     { club: 'palac', type: 'supervip', src: 'Конфігурація SuperVIP — клуб «Палац Спорту». В інших клубах залізо відрізняється — дивіться сторінку клубу.', glow: .36,
       specs: { cpu: 'AMD Ryzen 7 7800X3D', gpu: 'AMD RX 9070XT', ram: '32GB DDR5', monitor: 'MSI 24" 600Hz', periph: 'HyperX Alloy Origins TKL, Logitech G PRO X Superlight 2, HyperX Cloud Alpha', chair: 'Cougar Armor EVO' } }
   ];
-  let hwTier = -1, hwManualUntil = 0, setTier = () => {};
+  let hwTier = -1, setTier = () => {};
   const PCR = { mx: 0, my: 0, drag: 0, dragging: false, lastX: 0 };
   const PCS = { ry: 60, rx: -8, tx: 0, s: 1 };
   const pc = $('#pc');
@@ -512,16 +512,8 @@ void main(){
       hwSection.style.setProperty('--glow', t.glow);
       selectSeg(hwTabs, $$('button', hwTabs)[i]);
     };
-    $$('button', hwTabs).forEach((b) => b.addEventListener('click', () => {
-      const i = +b.dataset.tier;
-      setTier(i);
-      hwManualUntil = performance.now() + 2500;
-      if (isDesk() && S.hw) { // прокручуємо до відповідної ділянки pinned-секції
-        const span = S.hw.h - vh;
-        const target = S.hw.top + span * [0.12, 0.5, 0.85][i];
-        if (Math.abs(target - window.scrollY) > 40) scrollToY(target);
-      }
-    }));
+    // конфігурація змінюється лише кнопками, скрол її не перемикає
+    $$('button', hwTabs).forEach((b) => b.addEventListener('click', () => setTier(+b.dataset.tier)));
     setTier(0);
 
     // актуальне залізо з бази
@@ -1093,7 +1085,6 @@ void main(){
       const span = S.hw.h - vh;
       const p = desk ? clamp((y - S.hw.top) / span) : 0;
       hwSection.classList.toggle('is-in', enter > 0.55);
-      if (desk && performance.now() > hwManualUntil && enter >= 1) setTier(p < 0.34 ? 0 : p < 0.67 ? 1 : 2);
       const tRy = 72 - p * 26 + PCR.mx * 14 + PCR.drag;
       const tRx = -8 - PCR.my * 8 + (1 - enter) * 10;
       PCS.ry = lerp(PCS.ry, reduced ? 62 : tRy, 0.08);
