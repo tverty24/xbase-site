@@ -282,7 +282,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .hero__line { display: block; will-change: transform; }
 .hero__line--outline { color: var(--text); padding-left: 12vw; position: relative; }
-.hero__line--outline .ch:last-child { color: var(--accent); }
+.hero__line:last-child .ch:last-child { color: var(--accent); }
 .hero__line .ch { text-shadow: calc(var(--ca, 0) * 1px) 0 rgba(255, 40, 90, .55), calc(var(--ca, 0) * -1px) 0 rgba(0, 220, 255, .55); }
 
 .hero__bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-top: clamp(28px, 4vh, 48px); }
