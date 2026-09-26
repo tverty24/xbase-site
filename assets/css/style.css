@@ -158,9 +158,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .has-cursor, .has-cursor a, .has-cursor button, .has-cursor label, .has-cursor [data-cursor] { cursor: none; }
 .has-cursor input, .has-cursor select, .has-cursor textarea { cursor: auto; }
 .cursor__dot, .cursor__ring { position: absolute; left: 0; top: 0; border-radius: 50%; will-change: transform; }
-.cursor__dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--accent); }
+.cursor__dot { width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; background: var(--accent); }
 .cursor__ring {
-  width: 40px; height: 40px; margin: -20px 0 0 -20px; display: grid; place-items: center;
+  width: 32px; height: 32px; margin: -16px 0 0 -16px; display: grid; place-items: center;
   border: 1px solid rgba(255,255,255,.4);
 }
 .cursor__ring::before { content: ''; position: absolute; inset: 0; border-radius: 50%; background: var(--accent); transform: scale(0); transition: transform .5s var(--ease); }
