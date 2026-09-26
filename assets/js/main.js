@@ -599,15 +599,20 @@ void main(){
       const r = club.getBoundingClientRect();
       club.style.setProperty('--px', (((e.clientX - r.left) / r.width - 0.5) * -24).toFixed(1) + 'px');
     });
+    // клік по картці — одразу на сторінку клубу з повною інформацією
     club.addEventListener('click', (e) => {
       if (e.target.closest('[data-book], a')) return;
-      if (isDesk() && !club.classList.contains('is-active') && !e.target.closest('[data-open-club]')) { activate(club); return; }
-      openDetail(club.dataset.club, club);
+      goToClub(club.dataset.club);
     });
     club.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && e.target === club) { e.preventDefault(); openDetail(club.dataset.club, club); }
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === club) { e.preventDefault(); goToClub(club.dataset.club); }
     });
   });
+
+  function goToClub(id) {
+    const c = clubById(id);
+    if (c) location.href = c.page;
+  }
 
   function setClipFrom(el) {
     const r = el ? el.getBoundingClientRect() : { top: vh / 2, left: vw / 2, right: vw / 2, bottom: vh / 2 };
@@ -658,7 +663,7 @@ void main(){
     if (!keepLock) { lockScroll(false); if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true }); }
   }
   $$('[data-close-detail]').forEach((b) => b.addEventListener('click', () => closeDetail()));
-  $$('[data-open-club]').forEach((b) => b.addEventListener('click', (e) => { e.stopPropagation(); openDetail(b.dataset.openClub, b.closest('.club')); }));
+  $$('[data-open-club]').forEach((b) => b.addEventListener('click', (e) => { e.stopPropagation(); goToClub(b.dataset.openClub); }));
 
   /* ======================================================================
      17. BOOKING
